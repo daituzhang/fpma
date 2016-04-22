@@ -25,7 +25,7 @@ return array(
     ),
     'z77z-ghyl.accessdomain.com' => array(
         'server' => 'localhost',
-        'user' => 'fpma',
+        'user' => 'root',
         'password' => 'Key+1010fr',
         'database' => 'fpma',
     ),
