@@ -27,7 +27,7 @@ return array(
     ),
 
 
-    'z77z-ghyl.accessdomain.com' => array(
+    'accessdomain.com' => array(
         'devMode' => true,
         'environmentVariables' => array(
             'env' => 'dev',
