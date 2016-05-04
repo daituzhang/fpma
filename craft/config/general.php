@@ -31,7 +31,7 @@ return array(
         'devMode' => true,
         'environmentVariables' => array(
             'env' => 'dev',
-            'fileSystemPath' => '/var/www/fpma/public',
+            'fileSystemPath' => '/var/www/fpma/public/',
             'frontEndAssets' => '/src/',
             'siteName' => 'fpma',
         )
