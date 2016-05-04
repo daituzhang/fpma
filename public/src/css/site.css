@@ -328,13 +328,13 @@ p {
   min-height: 1px;
   padding-left: 20px;
   vertical-align: top; }
-  @media (max-width: 700px) {
+  @media (max-width: 1024px) {
     .col {
       display: block;
       margin-left: 0;
       margin-right: 0;
       width: auto; } }
-  @media (max-width: 700px) and (min-width: 480px) {
+  @media (max-width: 1024px) and (min-width: 760px) {
     .col[class*="col--m-"] {
       display: inline-block;
       margin-right: -.24em; }
@@ -348,7 +348,7 @@ p {
       width: 25%; }
     .col.col--m-3-of-4 {
       width: 75%; } }
-  @media (max-width: 480px) {
+  @media (max-width: 760px) {
     .col[class*="col--s-"] {
       display: inline-block;
       margin-right: -.24em; }
@@ -710,6 +710,10 @@ footer {
     text-decoration: none; }
     footer a:hover {
       text-decoration: underline; }
+  footer .mobile-container {
+    padding: 20px; }
+    footer .mobile-container ul:not(:last-child) {
+      margin-bottom: 10px; }
 
 html {
   font-size: 10px;
@@ -753,6 +757,9 @@ img {
 
 hr {
   border: 1px solid #d5d5d5; }
+
+.text-center {
+  text-align: center; }
 
 .mobile-only {
   display: none !important; }
@@ -981,6 +988,12 @@ nav#mp-menu {
     margin-top: 90px;
     padding: 25px;
     background: rgba(0, 0, 0, 0.7); }
+  @media only screen and (max-width: 760px) and (min-device-width: 1025px) {
+    .secondary-hero .side-container {
+      padding-left: 0; } }
+  @media only screen and (max-device-width: 760px) {
+    .secondary-hero .side-container {
+      padding-left: 0; } }
 
 .one-column {
   color: #777;
@@ -1005,6 +1018,9 @@ section.staff {
     padding-bottom: 110px; }
   section.staff:not(:last-of-type) {
     border-bottom: none; }
+  section.staff img {
+    width: 268px;
+    max-width: 100%; }
 
 .home-programs {
   color: #777;
@@ -1066,10 +1082,11 @@ section.staff {
   line-height: 1.6; }
   .two-columns h2 {
     margin-bottom: 30px; }
-  .two-columns .side-container {
-    padding-left: 5%; }
   .two-columns .btn-contact {
     margin-top: 40px; }
+  @media only screen and (min-width: 1025px) and (min-device-width: 1025px) {
+    .two-columns .side-container {
+      padding-left: 5%; } }
 
 .contact h2 {
   margin-bottom: 50px; }

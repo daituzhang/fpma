@@ -44,7 +44,9 @@ img {
 hr {
   border: 1px solid $gray-border;
 }
-
+.text-center {
+  text-align: center;
+}
 .mobile-only {
   display: none !important;
   @include mobile-only {

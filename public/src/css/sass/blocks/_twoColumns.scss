@@ -5,10 +5,12 @@
   h2 {
     margin-bottom: 30px;
   }
-  .side-container {
-    padding-left: 5%;
-  }
   .btn-contact {
     margin-top: 40px;
+  }
+  @include desktop-only {
+    .side-container {
+      padding-left: 5%;
+    }
   }
 }

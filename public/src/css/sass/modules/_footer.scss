@@ -52,5 +52,10 @@ footer {
       text-decoration: underline;
     }
   }
-
+  .mobile-container {
+    padding: 20px;
+    ul:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 }

@@ -18,4 +18,8 @@ section.staff {
   &:not(:last-of-type) {
     border-bottom: none;
   }
+  img {
+    width: 268px;
+    max-width: 100%;
+  }
 }

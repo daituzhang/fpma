@@ -12,7 +12,7 @@
       </header>
     {% endif %}
     <div class="grid">
-      <div class="col col-3-of-5">
+      <div class="col col-3-of-5 col--m-1-of-2">
         {% if block.body %}
           {{ block.body }}
         {% endif %}
@@ -20,7 +20,7 @@
           <div id="gmap_canvas" data-title="{{ block.mapTitle }}" data-address="{{ block.mapAddress }}" data-content="{{ block.mapContent }}" ></div>
         {% endif %}        
       </div>
-      <div class="col col-2-of-5">
+      <div class="col col-2-of-5 col--m-1-of-2">
         <div class="side-container">
         {% if parent %}
           <h3>{{ parent.title }}</h3>

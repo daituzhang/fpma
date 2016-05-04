@@ -47,4 +47,9 @@
     padding: 25px;
     background: rgba($black,0.7);
   }
+  @include mobile-only {
+    .side-container {
+      padding-left: 0;
+    }
+  }
 }
