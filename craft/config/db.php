@@ -23,10 +23,10 @@ return array(
         'password' => '',
         'database' => '',
     ),
-    'z77z-ghyl.accessdomain.com' => array(
+    'accessdomain.com' => array(
         'server' => 'localhost',
         'user' => 'root',
         'password' => 'Key+1010fr',
         'database' => 'fpma',
-    ),
+    )
 );
