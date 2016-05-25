@@ -82,7 +82,7 @@
                                 <ul>
                                     {# Outputting this days events. #}
                                     {% for d in item.events %}
-                                        <li><a href="{{ d.url }}/{{ d.eid }}">{{ d.title }}</a></li>
+                                        <li>{{ d.title }}</li>
                                     {% endfor %}
                                 </ul>
                             </td>
