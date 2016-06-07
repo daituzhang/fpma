@@ -467,6 +467,35 @@ form select {
   font-style: italic;
   background-color: #FFF; }
 
+.calendar {
+  margin-top: 44px; }
+  .calendar a.arrow {
+    text-decoration: none;
+    color: #777;
+    vertical-align: middle; }
+  .calendar .arrow-container {
+    margin-bottom: 15px; }
+    .calendar .arrow-container span {
+      text-transform: uppercase; }
+    .calendar .arrow-container:before {
+      content: '';
+      width: 40%;
+      height: 1px;
+      background-color: #777;
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: 0; }
+    .calendar .arrow-container:after {
+      content: '';
+      width: 40%;
+      height: 1px;
+      background-color: #777;
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 0; }
+
 .calendar-block table {
   border-collapse: collapse;
   font: 600 13px/20px "Lato", Helvetica Neue, sans-serif;

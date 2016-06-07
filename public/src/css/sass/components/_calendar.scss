@@ -1,3 +1,38 @@
+.calendar {
+  margin-top: 44px;
+  a.arrow {
+    text-decoration: none;
+    color: $gray;
+    vertical-align: middle;
+
+  }
+  .arrow-container {
+    span {
+      text-transform: uppercase;
+    }
+    margin-bottom: 15px;
+    &:before {
+        content:'';
+        width: 40%;
+        height: 1px;
+        background-color:$gray;
+        display:block;
+        position: absolute;
+        top: 15px;
+        left: 0;
+    }
+    &:after {
+        content:'';
+        width: 40%;
+        height: 1px;
+        background-color:$gray;
+        display:block;
+        position: absolute;
+        top: 15px;
+        right: 0;
+    }
+  }
+}
 .calendar-block table {
   border-collapse: collapse;
   font: 600 13px/20px "Lato", Helvetica Neue, sans-serif;
