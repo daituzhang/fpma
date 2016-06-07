@@ -391,7 +391,7 @@ p {
 
 .btn {
   font-weight: 700;
-  padding: 20px 20px;
+  padding: 18px 20px;
   border: 2px #f5f5f5 solid;
   border-radius: 50px;
   display: block;
@@ -732,7 +732,7 @@ section {
     margin: 0 auto;
     max-width: 1024px; }
   section:not(:first-of-type) {
-    border-bottom: 1px solid #d5d5d5; }
+    border-bottom: 1px solid #2d0d0d; }
   @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
     section {
       padding: 50px 5%; } }
@@ -865,6 +865,7 @@ nav#mp-menu {
     color: #FFF; }
   @media only screen and (min-width: 1025px) and (min-device-width: 1025px) {
     nav#mp-menu {
+      border-bottom: 1px solid #6f4848;
       -webkit-transform: none;
       -ms-transform: none;
       transform: none;
@@ -880,20 +881,24 @@ nav#mp-menu {
       nav#mp-menu h2 {
         display: none; }
       nav#mp-menu .mp-level {
+        width: 80%;
+        float: right;
         -webkit-transform: none !important;
         -ms-transform: none !important;
         transform: none !important;
         position: relative;
         background: none;
         text-align: right; }
-      nav#mp-menu a {
+      nav#mp-menu a:not(.logo-link) {
         padding: 20px 25px; }
-      nav#mp-menu li, nav#mp-menu a {
+      nav#mp-menu .logo {
+        z-index: 5; }
+      nav#mp-menu li, nav#mp-menu a:not(.logo-link) {
         -webkit-box-shadow: none;
         box-shadow: none;
         text-shadow: none;
         font-size: 1.6rem; }
-        nav#mp-menu li:not([class^="ficon-"]):before, nav#mp-menu a:not([class^="ficon-"]):before {
+        nav#mp-menu li:not([class^="ficon-"]):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"]):before {
           content: ""; }
       nav#mp-menu li {
         display: inline-block;
@@ -944,7 +949,8 @@ nav#mp-menu {
 .home-hero {
   color: #f5f5f5;
   font-size: 2.2rem;
-  text-align: center; }
+  text-align: center;
+  padding-top: 250px; }
   .home-hero h1 {
     margin-bottom: 50px; }
   .home-hero p {

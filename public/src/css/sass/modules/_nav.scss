@@ -49,6 +49,7 @@ nav#mp-menu {
     color: $white;
   }
   @include desktop-only {
+    border-bottom: 1px solid #6f4848;
     transform: none;
     background-color: rgba($black,.7);
     position: fixed;
@@ -63,15 +64,20 @@ nav#mp-menu {
       display: none;
     }
     .mp-level {
+      width: 80%;
+      float: right;
       transform: none !important;
       position: relative;
       background: none;
       text-align: right;
     }
-    a {
+    a:not(.logo-link) {
       padding: 20px 25px;
     }
-    li , a {
+    .logo {
+      z-index: 5;
+    }
+    li , a:not(.logo-link) {
       box-shadow: none;
       text-shadow: none;
       font-size: 1.6rem;
