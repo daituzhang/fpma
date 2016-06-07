@@ -43,7 +43,7 @@
       <nav id="mp-menu" class="mp-menu">
         <div class="logo desktop-only">
           {% if siteInfo.logo|length %}
-            <img src="{{siteInfo.logo|first.url}}" alt="siteInfo.logo">
+            <a href="/" class="logo-link"><img src="{{siteInfo.logo|first.url}}" alt="siteInfo.logo"></a>
           {% endif %}
         </div>
         <div class="mp-level">

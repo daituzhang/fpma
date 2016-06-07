@@ -17,7 +17,7 @@ section {
     max-width: 1024px;
   }
   &:not(:first-of-type) {
-    border-bottom: 1px solid $gray-border;
+    border-bottom: 1px solid #2d0d0d;
   }
   @include tablet-mobile {
     padding: 50px 5%;

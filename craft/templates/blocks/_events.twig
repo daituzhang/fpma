@@ -16,9 +16,7 @@
     {{ block.location }}
 
   </div>
-</section>
-{# CUSTOM CALENDAR OUTPUT #}
-<section class='calendar' style="width:90%;">
+  <div class='calendar'>
     {# We are passing the Month and Years as url params #}
     {% set currentMonth = craft.request.getParam('m') ? craft.request.getParam('m') : "now"|date('n') %}
     {% set currentYear = craft.request.getParam('y') ? craft.request.getParam('y') : "now"|date('Y') %}
@@ -32,10 +30,10 @@
     {% set disabled = prevMonth|date('Y-m-d') < now|date('Y-m-d') ? "disabled" : "" %}
     
     {# Previous Month button. Current Month & Year. Next Month Button #}
-    <div>
-        <a href="?m={{ prevMonth|date('n') }}&y={{ prevMonth|date('Y') }}" class="{{ disabled }}">prev</a>
+    <div class="arrow-container">
+        <a href="?m={{ prevMonth|date('n') }}&y={{ prevMonth|date('Y') }}" class="{{ disabled }} arrow ficon-chevron-with-circle-left"></a>
         <span>{{ cur|date('M Y') }}</span>
-        <a href="?m={{ nextMonth|date('n') }}&y={{ nextMonth|date('Y') }}" class="button arrow next">next</a>
+        <a href="?m={{ nextMonth|date('n') }}&y={{ nextMonth|date('Y') }}" class="button arrow next ficon-chevron-with-circle-right"></a>
     </div>
     <div class="calendar-block">
         {# Get the events for the calendar #}
@@ -105,5 +103,6 @@
             </table>
             </div>
         {# In CraftCMS 2.5 we don't need a closing tag for the Twig Calendar helper #}
+        </div>
     </div>
 </section>
