@@ -21,6 +21,8 @@ h2 {
 
 p {
   line-height: 1.8; }
+  p:not(.last-child) {
+    margin-bottom: 10px; }
 
 @font-face {
   font-family: 'FPMA';
