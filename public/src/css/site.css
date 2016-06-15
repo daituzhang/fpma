@@ -1051,7 +1051,7 @@ nav#mp-menu {
 section.staff {
   font-size: 1.8rem;
   color: #333;
-  padding: 100px 0 50px; }
+  padding: 100px 5% 50px; }
   section.staff h2 {
     padding-bottom: 15px; }
   section.staff h3 {
@@ -1066,6 +1066,9 @@ section.staff {
   section.staff img {
     width: 268px;
     max-width: 100%; }
+  @media only screen and (min-width: 1300px) {
+    section.staff {
+      background-size: 100% !important; } }
 
 .home-programs {
   color: #777;
