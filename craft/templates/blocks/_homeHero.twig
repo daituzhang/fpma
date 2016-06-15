@@ -1,4 +1,4 @@
-{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   background-size: cover;" %}
+{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   " %}
 
 <section class="home-hero" style="{{ backgroundImage }}">
   <div class="container">
