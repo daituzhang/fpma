@@ -950,7 +950,7 @@ nav#mp-menu {
             nav#mp-menu li > .mp-level li a {
               font-size: 1.4rem; }
         nav#mp-menu li:hover > .mp-level {
-          max-height: 200px; }
+          max-height: 500px; }
       nav#mp-menu li.social {
         color: #FFF; }
         nav#mp-menu li.social a {

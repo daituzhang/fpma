@@ -104,7 +104,7 @@ nav#mp-menu {
         }
       }
       &:hover > .mp-level {
-        max-height: 200px;
+        max-height: 500px;
       }
     }
     li.social {
@@ -140,4 +140,9 @@ nav#mp-menu {
   #trigger {
     display: none;
   }
+}
+
+@media only screen and (min-device-width: 1025px) and (min-width: 1025px) and (max-width: 1112px){
+  nav#mp-menu a:not(.logo-link) {
+    padding: 20px 13px;
 }
