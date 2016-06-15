@@ -984,15 +984,18 @@ nav#mp-menu {
     padding: 20px 13px; } }
 
 .home-hero {
+  background-size: cover !important;
   color: #f5f5f5;
   font-size: 2.2rem;
   text-align: center;
-  padding-top: 250px;
-  background-size: cover !important; }
+  padding-top: 250px; }
   .home-hero h1 {
     margin-bottom: 50px; }
   .home-hero p {
     margin-bottom: 45px; }
+  @media only screen and (min-width: 1000px) {
+    .home-hero {
+      background-size: 100% !important; } }
 
 .secondary-hero {
   color: #f5f5f5;
@@ -1067,9 +1070,6 @@ section.staff {
   section.staff img {
     width: 268px;
     max-width: 100%; }
-  @media only screen and (min-width: 1300px) {
-    section.staff {
-      background-size: 100% !important; } }
 
 .home-programs {
   color: #777;
