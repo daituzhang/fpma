@@ -22,6 +22,9 @@ section {
   @include tablet-mobile {
     padding: 50px 5%;
   }
+  p:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
 html, 
 body, 
