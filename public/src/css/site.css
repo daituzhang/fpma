@@ -922,7 +922,7 @@ nav#mp-menu {
         position: relative;
         background: none;
         text-align: right; }
-        nav#mp-menu .mp-level:not([data-level="2"]) {
+        nav#mp-menu .mp-level[data-level="2"] {
           width: 100%; }
       nav#mp-menu a:not(.logo-link) {
         padding: 20px 25px; }

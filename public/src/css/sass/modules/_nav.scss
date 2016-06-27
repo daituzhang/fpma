@@ -70,7 +70,7 @@ nav#mp-menu {
       position: relative;
       background: none;
       text-align: right;
-      &:not([data-level="2"]){
+      &[data-level="2"]{
         width: 100%;
       }
     }
