@@ -968,7 +968,8 @@ nav#mp-menu {
           nav#mp-menu li > .mp-level li {
             display: block; }
             nav#mp-menu li > .mp-level li a {
-              font-size: 1.4rem; }
+              font-size: 1.4rem;
+              padding: 5px 25px; }
         nav#mp-menu li:hover > .mp-level {
           max-height: 500px; }
       nav#mp-menu li.social {
