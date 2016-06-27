@@ -31,7 +31,7 @@ p {
   font-weight: normal;
   font-style: normal; }
 
-[class^="ficon-"], form .field:nth-child(4), [class*=" ficon-"] {
+[class^="ficon-"], form .field:nth-child(5):before, [class*=" ficon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'FPMA' !important;
   speak: none;
@@ -68,7 +68,7 @@ p {
 .ficon-chevron-with-circle-up:before {
   content: "\e907"; }
 
-.ficon-triangle-down:before, form .field:nth-child(4):before {
+.ficon-triangle-down:before, form .field:nth-child(5):before {
   content: "\e908"; }
 
 .ficon-facebook:before {
@@ -418,63 +418,62 @@ p {
 #form-contact .field:last-child {
   display: none; }
 
-form fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0; }
-
-form .field .heading {
-  display: none; }
-
-form .field:nth-child(4):before {
-  position: absolute;
-  top: 12px;
-  right: 0;
-  font-size: 20px;
-  color: #aaa; }
-
-form input, form select {
-  height: 45px;
-  padding: 12px;
-  color: #aaa;
-  border: 1px solid #e5e5e5;
-  width: 100%;
-  -webkit-box-shadow: 1px 1px 2px -2px #000 inset;
-  box-shadow: 1px 1px 2px -2px #000 inset; }
-  form input::-webkit-input-placeholder, form select::-webkit-input-placeholder {
+form {
+  position: relative; }
+  form fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0; }
+  form .field {
+    position: relative; }
+    form .field .heading {
+      display: none; }
+    form .field:nth-child(5):before:before {
+      position: absolute;
+      top: 12px;
+      right: 5px;
+      font-size: 20px;
+      color: #aaa; }
+  form input, form select {
+    height: 45px;
+    padding: 12px;
+    color: #aaa;
+    border: 1px solid #e5e5e5;
+    width: 100%;
+    -webkit-box-shadow: 1px 1px 2px -2px #000 inset;
+    box-shadow: 1px 1px 2px -2px #000 inset; }
+    form input::-webkit-input-placeholder, form select::-webkit-input-placeholder {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic; }
+    form input:-moz-placeholder, form select:-moz-placeholder {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic; }
+    form input::-moz-placeholder, form select::-moz-placeholder {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic; }
+    form input:-ms-input-placeholder, form select:-ms-input-placeholder {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic; }
+  form input {
+    margin-bottom: 18px; }
+  form select {
+    height: 45px;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
     font-size: 1.5rem;
     font-weight: 300;
-    font-style: italic; }
-  form input:-moz-placeholder, form select:-moz-placeholder {
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic; }
-  form input::-moz-placeholder, form select::-moz-placeholder {
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic; }
-  form input:-ms-input-placeholder, form select:-ms-input-placeholder {
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic; }
-
-form input {
-  margin-bottom: 18px; }
-
-form select {
-  height: 45px;
-  border-radius: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  padding: 12px;
-  width: 100%;
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin-bottom: 30px;
-  font-style: italic;
-  background-color: #FFF; }
+    margin-bottom: 30px;
+    font-style: italic;
+    background-color: #FFF; }
 
 .calendar {
   margin-top: 44px; }
@@ -940,7 +939,7 @@ nav#mp-menu {
         box-shadow: none;
         text-shadow: none;
         font-size: 1.6rem; }
-        nav#mp-menu li:not([class^="ficon-"], form .field:nth-child(4), form .field:nth-child(4)):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form .field:nth-child(4), form .field:nth-child(4)):before {
+        nav#mp-menu li:not([class^="ficon-"], form .field:nth-child(5):before, form .field:nth-child(5):before):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form .field:nth-child(5):before, form .field:nth-child(5):before):before {
           content: ""; }
       nav#mp-menu li {
         max-width: 145px;

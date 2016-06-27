@@ -6,22 +6,24 @@
   }
 }
 form {
+  position: relative;
   fieldset {
     padding: 0;
     margin: 0;
     border: 0;
   }
   .field {
+    position: relative;
     .heading {
       display: none;
     }
-    &:nth-child(4) {
+    &:nth-child(5):before {
       @extend [class^="ficon-"];
-      @extend .ficon-triangle-down;
+      @extend .ficon-triangle-down:before;
       &:before {
         position: absolute;
         top: 12px;
-        right: 0;
+        right: 5px;
         font-size: 20px;
         color: #aaa;
       }
