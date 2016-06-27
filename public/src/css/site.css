@@ -942,7 +942,7 @@ nav#mp-menu {
         nav#mp-menu .mp-level[data-level="2"] {
           width: 100%; }
       nav#mp-menu a:not(.logo-link) {
-        padding: 20px 25px; }
+        padding: 23px 25px; }
       nav#mp-menu .logo {
         z-index: 5; }
       nav#mp-menu li, nav#mp-menu a:not(.logo-link) {
