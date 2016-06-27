@@ -15,6 +15,17 @@ form {
     .heading {
       display: none;
     }
+    &:last-child {
+      @extend [class^="ficon-"];
+      @extend .ficon-triangle-down;
+      &:before {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        font-size: 20px;
+        color: #aaa;
+      }
+    }
   }
   input,select {
     height: 45px;
