@@ -940,7 +940,7 @@ nav#mp-menu {
         text-shadow: none;
         font-size: 1.6rem; }
         nav#mp-menu li:not([class^="ficon-"], form .field:nth-child(5):before, form .field:nth-child(5):before):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form .field:nth-child(5):before, form .field:nth-child(5):before):before {
-          content: ""; }
+          content: none; }
       nav#mp-menu li {
         max-width: 145px;
         display: inline-block;
