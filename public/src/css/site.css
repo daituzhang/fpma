@@ -31,7 +31,7 @@ p {
   font-weight: normal;
   font-style: normal; }
 
-[class^="ficon-"], form .field:last-child, [class*=" ficon-"] {
+[class^="ficon-"], form .field:last-child, form .field:last-of-type, [class*=" ficon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'FPMA' !important;
   speak: none;
@@ -68,7 +68,7 @@ p {
 .ficon-chevron-with-circle-up:before {
   content: "\e907"; }
 
-.ficon-triangle-down:before, form .field:last-child:before {
+.ficon-triangle-down:before, form .field:last-child:before, form .field:last-of-type:before {
   content: "\e908"; }
 
 .ficon-facebook:before {
@@ -426,7 +426,7 @@ form fieldset {
 form .field .heading {
   display: none; }
 
-form .field:last-child:before {
+form .field:last-child:before, form .field:last-of-type:before {
   position: absolute;
   top: 12px;
   right: 0;
@@ -940,7 +940,7 @@ nav#mp-menu {
         box-shadow: none;
         text-shadow: none;
         font-size: 1.6rem; }
-        nav#mp-menu li:not([class^="ficon-"], form .field:last-child, form .field:last-child):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form .field:last-child, form .field:last-child):before {
+        nav#mp-menu li:not([class^="ficon-"], form .field:last-child, form .field:last-of-type, form .field:last-child, form .field:last-of-type):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form .field:last-child, form .field:last-of-type, form .field:last-child, form .field:last-of-type):before {
           content: ""; }
       nav#mp-menu li {
         max-width: 145px;
