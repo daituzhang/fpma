@@ -1013,7 +1013,7 @@ nav#mp-menu {
     margin-bottom: 50px; }
   .home-hero p {
     margin-bottom: 45px; }
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1300px) {
     .home-hero {
       background-size: 100% !important; } }
 
@@ -1062,7 +1062,7 @@ nav#mp-menu {
   @media only screen and (max-device-width: 760px) {
     .secondary-hero .side-container {
       padding-left: 0; } }
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1300px) {
     .secondary-hero {
       background-size: 100% !important; } }
 
