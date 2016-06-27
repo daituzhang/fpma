@@ -47,5 +47,6 @@ form {
     margin-bottom: 30px;
     font-style: italic;
     background-color: $white;
+    @extend .ficon-triangle-down;
   }
 }

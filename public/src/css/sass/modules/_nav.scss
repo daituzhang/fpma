@@ -70,6 +70,9 @@ nav#mp-menu {
       position: relative;
       background: none;
       text-align: right;
+      &:not([data-level="2"]){
+        width: 100%;
+      }
     }
     a:not(.logo-link) {
       padding: 20px 25px;
@@ -86,6 +89,7 @@ nav#mp-menu {
       }
     }
     li{
+      max-width: 145px;
       display: inline-block;
       width: auto;
       text-shadow: none;
@@ -144,6 +148,6 @@ nav#mp-menu {
 
 @media only screen and (min-device-width: 1025px) and (min-width: 1025px) and (max-width: 1112px){
   nav#mp-menu a:not(.logo-link) {
-    padding: 20px 13px;
+    padding: 23px 13px;
   }
 }

@@ -68,7 +68,7 @@ p {
 .ficon-chevron-with-circle-up:before {
   content: "\e907"; }
 
-.ficon-triangle-down:before {
+.ficon-triangle-down:before, form select:before {
   content: "\e908"; }
 
 .ficon-facebook:before {
@@ -922,6 +922,8 @@ nav#mp-menu {
         position: relative;
         background: none;
         text-align: right; }
+        nav#mp-menu .mp-level:not([data-level="2"]) {
+          width: 100%; }
       nav#mp-menu a:not(.logo-link) {
         padding: 20px 25px; }
       nav#mp-menu .logo {
@@ -934,6 +936,7 @@ nav#mp-menu {
         nav#mp-menu li:not([class^="ficon-"]):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"]):before {
           content: ""; }
       nav#mp-menu li {
+        max-width: 145px;
         display: inline-block;
         width: auto;
         text-shadow: none;
@@ -981,7 +984,7 @@ nav#mp-menu {
 
 @media only screen and (min-device-width: 1025px) and (min-width: 1025px) and (max-width: 1112px) {
   nav#mp-menu a:not(.logo-link) {
-    padding: 20px 13px; } }
+    padding: 23px 13px; } }
 
 .home-hero {
   background-size: cover !important;
