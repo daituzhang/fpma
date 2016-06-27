@@ -15,7 +15,13 @@
     <fieldset class="{{ tab.name |lower|replace(' ', '-') }}">
       {% for field in fields %}
         {% set input = craft.formBuilder2.getInputHtml(field) %}
-        {{ input |raw }}
+        {% if field == 'location') %}
+          <div class="select">        
+          {{ input |raw }}
+          </div>
+        {% else %} 
+          {{ input |raw }}
+        {% endif %}
       {% endfor %} 
     </fieldset>
   {% endfor %}
