@@ -85,7 +85,7 @@ nav#mp-menu {
       text-shadow: none;
       font-size: 1.6rem;
       &:not([class^="ficon-"]):before {
-        content: none;
+        content: none !important;
       }
     }
     li{
