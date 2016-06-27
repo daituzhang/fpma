@@ -428,7 +428,7 @@ form {
     position: relative; }
     form .field .heading {
       display: none; }
-    form .field:nth-child(5):before:before {
+    form .field:nth-child(5):before {
       position: absolute;
       top: 12px;
       right: 5px;

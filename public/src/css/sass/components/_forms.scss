@@ -20,13 +20,11 @@ form {
     &:nth-child(5):before {
       @extend [class^="ficon-"];
       @extend .ficon-triangle-down:before;
-      &:before {
-        position: absolute;
-        top: 12px;
-        right: 5px;
-        font-size: 20px;
-        color: #aaa;
-      }
+      position: absolute;
+      top: 12px;
+      right: 5px;
+      font-size: 20px;
+      color: #aaa;
     }
   }
   input,select {
