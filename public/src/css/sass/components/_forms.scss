@@ -47,10 +47,5 @@ form {
     margin-bottom: 30px;
     font-style: italic;
     background-color: $white;
-
-    &[name="location"]{
-      @extend [class^="ficon-"];
-      @extend .ficon-triangle-down;
-    }
   }
 }
