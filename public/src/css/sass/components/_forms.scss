@@ -15,7 +15,7 @@ form {
     .heading {
       display: none;
     }
-    &:last-child, &:last-of-type {
+    &:nth-child(4) {
       @extend [class^="ficon-"];
       @extend .ficon-triangle-down;
       &:before {
