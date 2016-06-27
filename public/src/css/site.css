@@ -31,7 +31,7 @@ p {
   font-weight: normal;
   font-style: normal; }
 
-[class^="ficon-"], [class*=" ficon-"] {
+[class^="ficon-"], form select, [class*=" ficon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'FPMA' !important;
   speak: none;
@@ -427,7 +427,7 @@ form .field .heading {
   display: none; }
 
 form input, form select {
-  height: 60px;
+  height: 45px;
   padding: 20px;
   color: #aaa;
   border: 1px solid #e5e5e5;
@@ -455,7 +455,7 @@ form input {
   margin-bottom: 18px; }
 
 form select {
-  height: 60px;
+  height: 45px;
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -933,7 +933,7 @@ nav#mp-menu {
         box-shadow: none;
         text-shadow: none;
         font-size: 1.6rem; }
-        nav#mp-menu li:not([class^="ficon-"]):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"]):before {
+        nav#mp-menu li:not([class^="ficon-"], form select, form select):before, nav#mp-menu a:not(.logo-link):not([class^="ficon-"], form select, form select):before {
           content: ""; }
       nav#mp-menu li {
         max-width: 145px;
