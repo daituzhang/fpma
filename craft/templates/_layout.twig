@@ -8,8 +8,6 @@
  # See Twig’s Template Inheritance documentation for more details:
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
-{% set pages = craft.entries.section('pages') %}
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -17,7 +15,7 @@
 	<meta charset="utf-8" />
 	<meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
-  <meta name="description" value="{% block metaDescription %}{{ seo.metaDescription }}{% endblock %}">
+  <meta name="description" value="{{ seo.metaDescription }}">
 
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ seo.metaTitle }}</title>
 
@@ -88,43 +86,7 @@
           <footer>
             <div class="container">
               <div class="grid">
-                <div class="col col-1-of-3 col--m-1-of-2 desktop-tablet-only">
-                  <div class="col col-1-of-2 col--m-1-of-2">
-                    <div class="footer-container">
-                      {{ include('include/_getChildren.twig', {parentSlug: 'about-us', location:'off'}) }}
-                      {{ include('include/_getChildren.twig', {parentSlug: 'locations', location:'off'}) }}
-                      {{ include('include/_getChildren.twig', {parentSlug: 'contact-us', location:'off'}) }}
-                      <ul>
-                        {% if siteInfo.facebook %}
-                        <li class="social"><a class="ficon-facebook" href="{{ siteInfo.facebook }}"></a></li>
-                        {% endif %}
-                        {% if siteInfo.instagram %}
-                          <li class="social"><a class="ficon-instagram" href="{{ siteInfo.instagram }}"></a></li>
-                        {% endif %}
-                        {% if siteInfo.youtube %}
-                          <li class="social"><a class="ficon-youtube" href="{{ siteInfo.youtube }}"></a></li>
-                        {% endif %}
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col col-1-of-2 col--m-1-of-2">
-                    <div class="footer-container">
-                      {{ include('include/_getChildren.twig', {parentSlug: 'programs', location:'off'}) }}
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-3-of-12 col--m-1-of-2 desktop-tablet-only">
-                  <div class="footer-container">
-                    {{ include('include/_getChildren.twig', {parentSlug: 'locations', location:'on'}) }}
-                  </div>
-                </div>
-                <div class="col col-5-of-12">
-                  <div class="footer-container form-container">
-                    <h3>Access Our Specials</h3>
-                    {{ include('include/_form.twig')}}
-                  </div>
-                </div>
-              </div>
+                
               <div class="mobile-only text-center mobile-container">
                 <ul>
                   {% if siteInfo.facebook %}
