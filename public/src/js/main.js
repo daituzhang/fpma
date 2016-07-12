@@ -65,11 +65,11 @@ function slides(){
   $('.hero-arrow.arrow-left').click(function(e){
     var current = $('.hero-slide.active').index() - 1;
     var next = current == 0 ? len-1 : next - 1;
-    $('.hero-slide.active').addClass('left-out');
-    $('.hero-slide').eq(next).addClass('active right-in');
+    $('.hero-slide.active').addClass('right-out');
+    $('.hero-slide').eq(next).addClass('active left-in');
     setTimeout(function(){
-      $('.hero-slide.left-out').removeClass('left-out active');
-      $('.hero-slide.right-in').removeClass('right-in');
+      $('.hero-slide.right-out').removeClass('right-out active');
+      $('.hero-slide.left-in').removeClass('left-in');
     }, 1000);
   });
   $('.hero-arrow.arrow-right').click(function(e){
