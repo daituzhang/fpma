@@ -1011,13 +1011,25 @@ nav#mp-menu {
   font-size: 2.2rem;
   text-align: center;
   padding-top: 250px; }
-  .home-hero h1 {
+  .home-hero h1, .home-hero h2 {
     margin-bottom: 50px; }
   .home-hero p {
     margin-bottom: 45px; }
   @media only screen and (min-width: 1300px) {
     .home-hero {
       background-size: 100% !important; } }
+  .home-hero .hero-slides-container {
+    width: 100%;
+    height: 100%; }
+    .home-hero .hero-slides-container .hero-slide {
+      width: 100%;
+      height: 100%; }
+      .home-hero .hero-slides-container .hero-slide:not(:first-child) {
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .home-hero .hero-slides-container .hero-slide:active {
+        z-index: 8; }
 
 .secondary-hero {
   background-size: cover !important;
