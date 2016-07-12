@@ -1020,7 +1020,10 @@ nav#mp-menu {
   .home-hero .hero-slides-container {
     width: 100%;
     height: 100%; }
+    .home-hero .hero-slides-container .arrow {
+      cursor: pointer; }
     .home-hero .hero-slides-container .hero-slide {
+      background-size: cover !important;
       text-align: center;
       padding-top: 250px;
       width: 100%;
@@ -1031,6 +1034,53 @@ nav#mp-menu {
         left: 0; }
       .home-hero .hero-slides-container .hero-slide:active {
         z-index: 8; }
+      .home-hero .hero-slides-container .hero-slide.left-in {
+        -webkit-animation: leftIn 1s infinite;
+        animation: leftIn 1s infinite; }
+      .home-hero .hero-slides-container .hero-slide.right-in {
+        -webkit-animation: rightIn 1s infinite;
+        animation: rightIn 1s infinite; }
+      .home-hero .hero-slides-container .hero-slide.left-out {
+        -webkit-animation: leftOut 1s infinite;
+        animation: leftOut 1s infinite; }
+      .home-hero .hero-slides-container .hero-slide.right-Out {
+        -webkit-animation: rightIn 1s infinite;
+        animation: rightIn 1s infinite; }
+      @media only screen and (min-width: 1300px) {
+        .home-hero .hero-slides-container .hero-slide {
+          background-size: 100% !important; } }
+
+@-webkit-keyframes leftIn {
+  0% {
+    -webkit-transform: translatX(-100%);
+    transform: translatX(-100%); }
+  100% {
+    -webkit-transform: translatX(0);
+    transform: translatX(0); } }
+
+@-webkit-keyframes rightIn {
+  0% {
+    -webkit-transform: translatX(100%);
+    transform: translatX(100%); }
+  100% {
+    -webkit-transform: translatX(0);
+    transform: translatX(0); } }
+
+@-webkit-keyframes leftOut {
+  0% {
+    -webkit-transform: translatX(0);
+    transform: translatX(0); }
+  100% {
+    -webkit-transform: translatX(-100%);
+    transform: translatX(-100%); } }
+
+@-webkit-keyframes rightOut {
+  0% {
+    -webkit-transform: translatX(0);
+    transform: translatX(0); }
+  100% {
+    -webkit-transform: translatX(100%);
+    transform: translatX(100%); } }
 
 .secondary-hero {
   background-size: cover !important;
