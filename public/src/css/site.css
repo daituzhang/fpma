@@ -1009,8 +1009,7 @@ nav#mp-menu {
   background-size: cover !important;
   color: #f5f5f5;
   font-size: 2.2rem;
-  text-align: center;
-  padding-top: 250px; }
+  padding: 0; }
   .home-hero h1, .home-hero h2 {
     margin-bottom: 50px; }
   .home-hero p {
@@ -1022,6 +1021,8 @@ nav#mp-menu {
     width: 100%;
     height: 100%; }
     .home-hero .hero-slides-container .hero-slide {
+      text-align: center;
+      padding-top: 250px;
       width: 100%;
       height: 100%; }
       .home-hero .hero-slides-container .hero-slide:not(:first-child) {
