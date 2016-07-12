@@ -39,16 +39,16 @@
         z-index: 8;
       }
       &.left-in {
-        animation: leftIn 1s infinite; 
+        animation: leftIn 1s normal forwards ease-in-out; 
       }
       &.right-in {
-        animation: rightIn 1s infinite; 
+        animation: rightIn 1s normal forwards ease-in-out; 
       }
       &.left-out {
-        animation: leftOut 1s infinite; 
+        animation: leftOut 1s normal forwards ease-in-out; 
       }
-      &.right-Out {
-        animation: rightIn 1s infinite; 
+      &.right-out {
+        animation: rightOut 1s normal forwards ease-in-out; 
       }
 
       @media only screen and (min-width : 1300px) {

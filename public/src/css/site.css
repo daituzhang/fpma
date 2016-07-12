@@ -1040,17 +1040,17 @@ nav#mp-menu {
       .home-hero .hero-slides-container .hero-slide.active {
         z-index: 8; }
       .home-hero .hero-slides-container .hero-slide.left-in {
-        -webkit-animation: leftIn 1s infinite;
-        animation: leftIn 1s infinite; }
+        -webkit-animation: leftIn 1s normal forwards ease-in-out;
+        animation: leftIn 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide.right-in {
-        -webkit-animation: rightIn 1s infinite;
-        animation: rightIn 1s infinite; }
+        -webkit-animation: rightIn 1s normal forwards ease-in-out;
+        animation: rightIn 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide.left-out {
-        -webkit-animation: leftOut 1s infinite;
-        animation: leftOut 1s infinite; }
-      .home-hero .hero-slides-container .hero-slide.right-Out {
-        -webkit-animation: rightIn 1s infinite;
-        animation: rightIn 1s infinite; }
+        -webkit-animation: leftOut 1s normal forwards ease-in-out;
+        animation: leftOut 1s normal forwards ease-in-out; }
+      .home-hero .hero-slides-container .hero-slide.right-out {
+        -webkit-animation: rightOut 1s normal forwards ease-in-out;
+        animation: rightOut 1s normal forwards ease-in-out; }
       @media only screen and (min-width: 1300px) {
         .home-hero .hero-slides-container .hero-slide {
           background-size: 100% !important; } }
