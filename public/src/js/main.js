@@ -66,7 +66,7 @@ function slides(){
     var current = $('.hero-slide.active').index();
     var next = current == 0 ? len-1 : next - 1;
     $('.hero-slide.active').addClass('left-out');
-    $('.hero-slide').eq(next).address('active right-in');
+    $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
       $('.hero-slide.left-out').removeClass('left-out');
       $('.hero-slide.right-in').removeClass('right-in');
@@ -81,4 +81,5 @@ $(document).ready(function() {
     if($('#gmap_canvas').length ) {
        google.maps.event.addDomListener(window, 'load', initMap); 
     }
+    slides();
 });
