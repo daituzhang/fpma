@@ -1017,6 +1017,8 @@ nav#mp-menu {
   @media only screen and (min-width: 1300px) {
     .home-hero {
       background-size: 100% !important; } }
+  .home-hero .hero-arrow {
+    position: absolute; }
   .home-hero .hero-slides-container {
     width: 100%;
     height: 100%; }
@@ -1028,7 +1030,7 @@ nav#mp-menu {
       padding-top: 250px;
       width: 100%;
       height: 100%; }
-      .home-hero .hero-slides-container .hero-slide:not(:first-child) {
+      .home-hero .hero-slides-container .hero-slide:not(:first-of-type) {
         position: absolute;
         top: 0;
         left: 0; }
