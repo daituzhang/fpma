@@ -1017,13 +1017,16 @@ nav#mp-menu {
   @media only screen and (min-width: 1300px) {
     .home-hero {
       background-size: 100% !important; } }
-  .home-hero .hero-arrow {
-    position: absolute; }
   .home-hero .hero-slides-container {
     width: 100%;
     height: 100%; }
-    .home-hero .hero-slides-container .arrow {
-      cursor: pointer; }
+    .home-hero .hero-slides-container .hero-arrow {
+      cursor: pointer;
+      position: absolute;
+      z-index: 9;
+      top: 250px; }
+    .home-hero .hero-slides-container .arrow-right {
+      right: 0; }
     .home-hero .hero-slides-container .hero-slide {
       background-size: cover !important;
       text-align: center;

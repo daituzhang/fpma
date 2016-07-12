@@ -62,7 +62,7 @@ function setSubject() {
 
 function slides(){
   var len = $('.hero-slide').length;
-  $('.hero-arrow arrow-left').click(function(e){
+  $('.hero-arrow.arrow-left').click(function(e){
     var current = $('.hero-slide.active').index();
     var next = current == 0 ? len-1 : next - 1;
     $('.hero-slide.active').addClass('left-out');
@@ -72,7 +72,7 @@ function slides(){
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
   });
-  $('.hero-arrow arrow-right').click(function(e){
+  $('.hero-arrow.arrow-right').click(function(e){
 
   });
 }

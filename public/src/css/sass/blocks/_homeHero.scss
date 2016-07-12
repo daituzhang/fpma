@@ -12,15 +12,17 @@
   @media only screen and (min-width : 1300px) {
     background-size: 100% !important;
   }
-  .hero-arrow {
-    position: absolute;
-
-  }
   .hero-slides-container {
     width: 100%;
     height: 100%;
-    .arrow {
+    .hero-arrow {
       cursor: pointer;
+      position: absolute;
+      z-index: 9;
+      top: 250px;
+    }
+    .arrow-right {
+      right: 0;
     }
     .hero-slide {
       background-size: cover !important;
