@@ -63,12 +63,12 @@ function setSubject() {
 function slides(){
   var len = $('.hero-slide').length;
   $('.hero-arrow.arrow-left').click(function(e){
-    var current = $('.hero-slide.active').index();
+    var current = $('.hero-slide.active').index() - 1;
     var next = current == 0 ? len-1 : next - 1;
     $('.hero-slide.active').addClass('left-out');
     $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
-      $('.hero-slide.left-out').removeClass('left-out');
+      $('.hero-slide.left-out').removeClass('left-out active');
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
   });
