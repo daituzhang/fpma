@@ -1028,13 +1028,20 @@ nav#mp-menu {
       cursor: pointer;
       position: absolute;
       z-index: 9;
-      top: 250px; }
+      font-size: 100px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      -webkit-transform: translate3d(0, -50%, 0);
+      transform: translate3d(0, -50%, 0); }
     .home-hero .hero-slides-container .arrow-right {
       right: 0; }
     .home-hero .hero-slides-container .hero-slide {
       background-size: cover !important;
       text-align: center;
-      padding: 250px 170px;
+      padding: 250px 170px 130px;
       width: 100%;
       height: 100%; }
       .home-hero .hero-slides-container .hero-slide:not(:last-of-type) {
