@@ -82,15 +82,17 @@ function slides(){
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
   }
+  var slideLoop = setInterval(function() {
+    slideRight();
+  }, 5000);
   $('.hero-arrow.arrow-left').click(function(e){
+    clearInterval(slideLoop);
     slideLeft();
   });
   $('.hero-arrow.arrow-right').click(function(e){
+    clearInterval(slideLoop);
     slideRight();
   });
-  setTimeout(function(){
-    slideRight();
-  }, 5000);
 }
 $(document).ready(function() {
     setSubject();
