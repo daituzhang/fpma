@@ -31,8 +31,8 @@
       right: 0;
     }
     .hero-slide {
-      background-size: cover !important;
-      background-position: 50% 50% !important;
+      // background-size: cover !important;
+      // background-position: 50% 50% !important;
       text-align: center;
       padding: 250px 170px 130px;
       width: 100%;
@@ -41,29 +41,35 @@
         position: absolute;
         top: 0;
         left: 0;
+        opacity: 0;
       }
       &.active {
         z-index: 8;
+        opacity: 1;
       }
       &.left-in {
+        opacity: 1;
         animation: leftIn 1s normal forwards ease-in-out; 
       }
       &.right-in {
+        opacity: 1;
         animation: rightIn 1s normal forwards ease-in-out; 
       }
       &.left-out {
+       opacity: 1;
         animation: leftOut 1s normal forwards ease-in-out; 
       }
       &.right-out {
+        opacity: 1;
         animation: rightOut 1s normal forwards ease-in-out; 
       }
       
       a {
         color: $off-white;
       }
-      @media only screen and (min-width : 1900px) {
-        background-size: 100% !important;
-      }
+      // @media only screen and (min-width : 1900px) {
+      //   background-size: 100% !important;
+      // }
     }
   }
 }

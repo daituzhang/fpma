@@ -1039,8 +1039,6 @@ nav#mp-menu {
     .home-hero .hero-slides-container .arrow-right {
       right: 0; }
     .home-hero .hero-slides-container .hero-slide {
-      background-size: cover !important;
-      background-position: 50% 50% !important;
       text-align: center;
       padding: 250px 170px 130px;
       width: 100%;
@@ -1048,26 +1046,29 @@ nav#mp-menu {
       .home-hero .hero-slides-container .hero-slide:not(:last-of-type) {
         position: absolute;
         top: 0;
-        left: 0; }
+        left: 0;
+        opacity: 0; }
       .home-hero .hero-slides-container .hero-slide.active {
-        z-index: 8; }
+        z-index: 8;
+        opacity: 1; }
       .home-hero .hero-slides-container .hero-slide.left-in {
+        opacity: 1;
         -webkit-animation: leftIn 1s normal forwards ease-in-out;
         animation: leftIn 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide.right-in {
+        opacity: 1;
         -webkit-animation: rightIn 1s normal forwards ease-in-out;
         animation: rightIn 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide.left-out {
+        opacity: 1;
         -webkit-animation: leftOut 1s normal forwards ease-in-out;
         animation: leftOut 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide.right-out {
+        opacity: 1;
         -webkit-animation: rightOut 1s normal forwards ease-in-out;
         animation: rightOut 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide a {
         color: #f5f5f5; }
-      @media only screen and (min-width: 1900px) {
-        .home-hero .hero-slides-container .hero-slide {
-          background-size: 100% !important; } }
 
 @-webkit-keyframes leftIn {
   0% {
