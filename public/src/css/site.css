@@ -1030,7 +1030,6 @@ nav#mp-menu {
       position: absolute;
       z-index: 9;
       font-size: 100px;
-      left: 0;
       position: absolute;
       top: 50%;
       -webkit-transform: translate(0, -50%);
