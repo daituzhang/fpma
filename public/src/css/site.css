@@ -1030,6 +1030,7 @@ nav#mp-menu {
       position: absolute;
       z-index: 9;
       font-size: 100px;
+      left: 0;
       position: absolute;
       top: 50%;
       -webkit-transform: translate(0, -50%);
@@ -1037,7 +1038,13 @@ nav#mp-menu {
       transform: translate(0, -50%);
       -webkit-transform: translate3d(0, -50%, 0);
       transform: translate3d(0, -50%, 0); }
-    .home-hero .hero-slides-container .arrow-right {
+      @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
+        .home-hero .hero-slides-container .hero-arrow {
+          font-size: 50px; } }
+      @media only screen and (max-device-width: 1024px) {
+        .home-hero .hero-slides-container .hero-arrow {
+          font-size: 50px; } }
+    .home-hero .hero-slides-container .hero-arrow.arrow-right {
       right: 0; }
     .home-hero .hero-slides-container .hero-slide {
       text-align: center;
@@ -1072,10 +1079,10 @@ nav#mp-menu {
         color: #f5f5f5; }
       @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
         .home-hero .hero-slides-container .hero-slide {
-          padding: 50px 5%; } }
+          padding: 50px 6%; } }
       @media only screen and (max-device-width: 1024px) {
         .home-hero .hero-slides-container .hero-slide {
-          padding: 50px 5%; } }
+          padding: 50px 6%; } }
 
 @-webkit-keyframes leftIn {
   0% {

@@ -26,9 +26,13 @@
       position: absolute;
       z-index: 9;
       font-size: 100px;
+      left: 0;
       @include center-y;
+      @include tablet-mobile {
+        font-size: 50px;
+      }
     }
-    .arrow-right {
+    .hero-arrow.arrow-right {
       right: 0;
     }
     .hero-slide {
@@ -72,7 +76,7 @@
       //   background-size: 100% !important;
       // }
       @include tablet-mobile {
-        padding: 50px 5%;
+        padding: 50px 6%;
       }
     }
   }
