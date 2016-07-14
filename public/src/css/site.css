@@ -1044,8 +1044,10 @@ nav#mp-menu {
       @media only screen and (max-device-width: 1024px) {
         .home-hero .hero-slides-container .hero-arrow {
           font-size: 50px; } }
-    .home-hero .hero-slides-container .hero-arrow.arrow-right {
-      right: 0; }
+      .home-hero .hero-slides-container .hero-arrow.arrow-left {
+        left: 0; }
+      .home-hero .hero-slides-container .hero-arrow.arrow-right {
+        right: 0; }
     .home-hero .hero-slides-container .hero-slide {
       text-align: center;
       padding: 250px 170px 130px;
