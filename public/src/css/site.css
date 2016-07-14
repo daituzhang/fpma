@@ -1070,6 +1070,12 @@ nav#mp-menu {
         animation: rightOut 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide a {
         color: #f5f5f5; }
+      @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
+        .home-hero .hero-slides-container .hero-slide {
+          padding: 50px 5%; } }
+      @media only screen and (max-device-width: 1024px) {
+        .home-hero .hero-slides-container .hero-slide {
+          padding: 50px 5%; } }
 
 @-webkit-keyframes leftIn {
   0% {
