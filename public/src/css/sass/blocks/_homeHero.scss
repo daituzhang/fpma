@@ -80,6 +80,9 @@
       @include tablet-mobile {
         padding: 50px 6%;
       }
+      @include mobile-only {
+        min-height: 1000px;
+      }
     }
   }
 }
