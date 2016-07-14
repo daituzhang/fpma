@@ -1064,7 +1064,7 @@ nav#mp-menu {
         animation: rightOut 1s normal forwards ease-in-out; }
       .home-hero .hero-slides-container .hero-slide a {
         color: #f5f5f5; }
-      @media only screen and (min-width: 1534px) {
+      @media only screen and (min-width: 1900px) {
         .home-hero .hero-slides-container .hero-slide {
           background-size: 100% !important; } }
 
