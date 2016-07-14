@@ -16,7 +16,7 @@
   </div> #}
   {% if block.slides|length %}
     <div class="hero-slides-container">
-      <span class="hero-arrow arrow-left">left</span>
+      <span class="hero-arrow arrow-left ficon-chevron-left"></span>
       {% for slide in block.slides %}
         {% set backgroundImage = slide.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   " %}
         <div class="hero-slide{% if loop.first  %} active{% endif %}" style="{{ backgroundImage }}">
@@ -32,7 +32,7 @@
           {% endif %}
         </div>
       {% endfor %}
-      <span class="hero-arrow arrow-right">right</span>
+      <span class="hero-arrow arrow-right ficon-chevron-left">right</span>
     </div>
   {% endif %}
 </section>
