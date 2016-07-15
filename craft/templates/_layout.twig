@@ -77,12 +77,14 @@
 
       <div class="scroller"><!-- this is for emulating position fixed of the nav -->
         <div class="scroller-inner">
-          <a href="/" class="logo-link-left tablet-mobile"><img src="{{siteInfo.logo|first.url}}" alt="siteInfo.logo"></a>
-          <a href="#" id="trigger" class="hamburger hamburger--collapse menu-trigger">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
-          </a>
+          <div class="mobile-nav tablet-mobile">
+            <a href="/" class="logo-link-left"><img src="{{siteInfo.logo|first.url}}" alt="siteInfo.logo"></a>
+            <a href="#" id="trigger" class="hamburger hamburger--collapse menu-trigger">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </a>
+          </div>
           {% endblock %}
           {% block content %}{% endblock %}
           {% block footer %}

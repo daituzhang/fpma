@@ -986,10 +986,17 @@ nav#mp-menu {
   .menu-trigger#trigger:before {
     background: tranparent; }
 
-.logo-link-left {
+.moble-nav {
+  border-bottom: 1px solid #6f4848;
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
+  height: 58px;
   top: 0;
   left: 0;
+  width: 100%; }
+
+.logo-link-left {
+  position: absolute;
   display: block;
   width: 160px;
   padding: 15px;
