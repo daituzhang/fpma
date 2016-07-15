@@ -979,14 +979,11 @@ nav#mp-menu {
           padding: 22px 8px; } }
 
 .menu-trigger#trigger {
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0; }
+  background: transparent; }
   .menu-trigger#trigger:before {
     background: tranparent; }
 
-.moble-nav {
+.mobile-nav {
   border-bottom: 1px solid #6f4848;
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;

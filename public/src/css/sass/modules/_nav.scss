@@ -122,14 +122,11 @@ nav#mp-menu {
 }
 .menu-trigger#trigger {
   background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
   &:before {
     background: tranparent;
   }
 }
-.moble-nav {
+.mobile-nav {
     border-bottom: 1px solid #6f4848;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
