@@ -1100,10 +1100,10 @@ nav#mp-menu {
         color: #f5f5f5; }
       @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
         .home-hero .hero-slides-container .hero-slide {
-          padding: 50px 6%; } }
+          padding: 150px 6% 50px; } }
       @media only screen and (max-device-width: 1024px) {
         .home-hero .hero-slides-container .hero-slide {
-          padding: 50px 6%; } }
+          padding: 150px 6% 50px; } }
       @media only screen and (max-width: 760px) and (min-device-width: 1025px) {
         .home-hero .hero-slides-container .hero-slide {
           min-height: 1000px; } }

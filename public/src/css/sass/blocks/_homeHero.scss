@@ -78,7 +78,7 @@
       //   background-size: 100% !important;
       // }
       @include tablet-mobile {
-        padding: 50px 6%;
+        padding: 150px 6% 50px;
       }
       @include mobile-only {
         min-height: 1000px;

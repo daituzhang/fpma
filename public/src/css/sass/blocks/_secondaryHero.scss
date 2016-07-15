@@ -53,6 +53,9 @@
       padding-left: 0;
     }
   }
+  @include tablet-mobile-only {
+    padding: 150px 5% 50px;
+  }
   @media only screen and (min-width : 1300px) {
     background-size: 100% !important;
   }
