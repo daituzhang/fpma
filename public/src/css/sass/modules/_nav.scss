@@ -124,10 +124,15 @@ nav#mp-menu {
   background: transparent;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   &:before {
     background: tranparent;
   }
+}
+.logo-link-left {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 @include desktop-only {
   .logo {
