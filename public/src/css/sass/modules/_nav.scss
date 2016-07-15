@@ -136,6 +136,7 @@ nav#mp-menu {
   display: block;
   width: 160px;
   padding: 15px;
+  z-index: 10;
 }
 @include desktop-only {
   .logo {
