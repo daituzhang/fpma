@@ -1188,6 +1188,12 @@ nav#mp-menu {
   @media only screen and (max-device-width: 760px) {
     .secondary-hero .side-container {
       padding-left: 0; } }
+  @media only screen and (max-width: 1024px) and (min-device-width: 1025px) {
+    .secondary-hero {
+      padding: 150px 5% 50px; } }
+  @media only screen and (max-device-width: 1024px) {
+    .secondary-hero {
+      padding: 150px 5% 50px; } }
   @media only screen and (min-width: 1300px) {
     .secondary-hero {
       background-size: 100% !important; } }
