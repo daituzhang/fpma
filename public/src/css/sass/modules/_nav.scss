@@ -132,7 +132,10 @@ nav#mp-menu {
 .logo-link-left {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0;    
+  display: block;
+  width: 160px;
+  padding: 15px;
 }
 @include desktop-only {
   .logo {
