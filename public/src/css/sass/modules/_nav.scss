@@ -124,7 +124,7 @@ nav#mp-menu {
   background: transparent;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   &:before {
     background: tranparent;
   }
@@ -137,6 +137,7 @@ nav#mp-menu {
   width: 160px;
   padding: 15px;
   z-index: 10;
+  @include center-x;
 }
 @include desktop-only {
   .logo {

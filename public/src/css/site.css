@@ -982,7 +982,7 @@ nav#mp-menu {
   background: transparent;
   position: absolute;
   top: 0;
-  right: 0; }
+  left: 0; }
   .menu-trigger#trigger:before {
     background: tranparent; }
 
@@ -993,7 +993,14 @@ nav#mp-menu {
   display: block;
   width: 160px;
   padding: 15px;
-  z-index: 10; }
+  z-index: 10;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0); }
 
 @media only screen and (min-width: 1025px) and (min-device-width: 1025px) {
   .logo {
