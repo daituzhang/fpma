@@ -31,7 +31,7 @@
     </div>
     <div class="calendar-block">
         {# Get the events for the calendar #}
-        {% set events = craft.venti.allEvents().startDate('and', '>= ' ~ prevMonth, '<= ' ~ nextMonth).location(location).find() %}
+        {% set events = craft.venti.allEvents().startDate('and', '>= ' ~ prevMonth, '<= ' ~ nextMonth).find() %}
         {# Setting the parameters for the Twig Calendar helper #}
         {% set prm = {
             "events": events,
@@ -74,7 +74,9 @@
                                 <ul>
                                     {# Outputting this days events. #}
                                     {% for d in item.events %}
-                                        <li>{{ d.title }}</li>
+                                        {% if d.location == location %}
+                                            <li>{{ d.title }}</li>
+                                        {% endif %}                                    
                                     {% endfor %}
                                 </ul>
                             </td>
