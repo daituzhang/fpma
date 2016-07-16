@@ -74,10 +74,10 @@
                                 <ul>
                                     {# Outputting this days events. #}
                                     {% for d in item.events %}
-                                        {% if d.eventLocation == location %}
+                                        {# {% if d.eventLocation == location %} #}
                                             <li>{{ d.title }}</li>
-                                        {% endif %}                                    
-                                    {% endfor %}
+{#                                         {% endif %}                                    
+ #}                                    {% endfor %}
                                 </ul>
                             </td>
                         {# If today is from a previous or next month output its date info. #}
