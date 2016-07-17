@@ -150,8 +150,8 @@
   </div>
   {% endblock %}
   {% block scripts_start %}
-  {{siteInfo.googleTagManagerScript}}
-  {{siteInfo.googleAnalyticsTagScript}}
+  {{siteInfo.googleTagManagerScript|e}}
+  {{siteInfo.googleAnalyticsTagScript|e}}
   {% endblock %}
     <!--  libraries downloaded from cdn -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
