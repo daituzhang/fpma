@@ -35,7 +35,7 @@ return array(
             'frontEndAssets' => '/src/',
             'siteName' => 'fpma',
         )
-    )
+    ),
 
     'freddiepoole.com' => array(
         'devMode' => true,
