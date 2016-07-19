@@ -28,5 +28,11 @@ return array(
         'user' => 'root',
         'password' => 'Key+1010fr',
         'database' => 'fpma',
+    ),
+    'freddiepoole.com' => array(
+        'server' => 'localhost',
+        'user' => 'root',
+        'password' => 'Key+1010fr',
+        'database' => 'fpma',
     )
 );

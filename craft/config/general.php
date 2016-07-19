@@ -37,6 +37,15 @@ return array(
         )
     )
 
+    'freddiepoole.com' => array(
+        'devMode' => true,
+        'environmentVariables' => array(
+            'env' => 'dev',
+            'fileSystemPath' => '/var/www/fpma/public/',
+            'frontEndAssets' => '/src/',
+            'siteName' => 'fpma',
+        )
+    )
     // 'z77z-ghyl.accessdomain.com' => array(
     //     'cooldownDuration' => 0,
 
