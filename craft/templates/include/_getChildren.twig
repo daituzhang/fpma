@@ -13,7 +13,7 @@
     {% endif %}
   {% elseif parent.slug == 'program' %}
     <li><a href="{{ child.url }}">{{ child.linkHeader}}</a></li>
-  {% else %}
+  {% elseif entry is defined %}
     <li><a href="{{ child.url }}"{% if child.slug == entry.slug %} class="active"{% endif %}>{{ child.title }}</a></li>
   {% endif %}
 {% endfor %}  
