@@ -86,6 +86,7 @@ function slides(){
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
     lock = 0;
+    console.log('inright',lock);
   }
   var slideLoop = setInterval(function() {
     slideRight();
