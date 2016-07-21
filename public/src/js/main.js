@@ -62,15 +62,18 @@ function setSubject() {
 
 function slides(){
   var len = $('.hero-slide').length;
+  var lock = 0;
   function slideLeft() {
     var current = $('.hero-slide.active').index() - 1;
     var next = current == 0 ? len - 1 : current - 1;
     $('.hero-slide.active').addClass('right-out');
     $('.hero-slide').eq(next).addClass('active left-in');
     setTimeout(function(){
+      lock = 1;
       $('.hero-slide.right-out').removeClass('right-out active');
       $('.hero-slide.left-in').removeClass('left-in');
     }, 1000);
+    lock = 0;
   }
   function slideRight() {
     var current = $('.hero-slide.active').index() - 1;
@@ -78,25 +81,26 @@ function slides(){
     $('.hero-slide.active').addClass('left-out');
     $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
+      lock = 1;
       $('.hero-slide.left-out').removeClass('left-out active');
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
+    lock = 0;
   }
   var slideLoop = setInterval(function() {
     slideRight();
   }, 5000);
   $('.hero-arrow.arrow-left').click(function(e){
     clearInterval(slideLoop);
-    $( ".hero-arrow").unbind( "click" );
-    slideLeft();
-    $( ".hero-arrow").bind( "click" );
+    if(!lock){
+      slideLeft();
+    }
   });
   $('.hero-arrow.arrow-right').click(function(e){
     clearInterval(slideLoop);
-    $( ".hero-arrow").unbind( "click" );
-    slideRight();
-    $( ".hero-arrow").bind( "click" );
-
+    if(!lock){
+      slideRight();
+    }
   });
 }
 $(document).ready(function() {
