@@ -64,30 +64,28 @@ function slides(){
   var len = $('.hero-slide').length;
   var lock = 0;
   function slideLeft() {
+    lock = 1;
     var current = $('.hero-slide.active').index() - 1;
     var next = current == 0 ? len - 1 : current - 1;
     $('.hero-slide.active').addClass('right-out');
     $('.hero-slide').eq(next).addClass('active left-in');
     setTimeout(function(){
-      lock = 1;
+      lock = 0;
       $('.hero-slide.right-out').removeClass('right-out active');
       $('.hero-slide.left-in').removeClass('left-in');
     }, 1000);
-    lock = 0;
   }
   function slideRight() {
+    lock = 1;
     var current = $('.hero-slide.active').index() - 1;
     var next = current == len - 1 ? 0 : current + 1;
     $('.hero-slide.active').addClass('left-out');
     $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
-      lock = 1;
-      console.log('inset');
+      lock = 0;
       $('.hero-slide.left-out').removeClass('left-out active');
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
-    lock = 0;
-    console.log('inright',lock);
   }
   var slideLoop = setInterval(function() {
     slideRight();
