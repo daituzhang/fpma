@@ -98,6 +98,7 @@ function slides(){
   });
   $('.hero-arrow.arrow-right').click(function(e){
     clearInterval(slideLoop);
+    console.log(lock);
     if(!lock){
       slideRight();
     }
