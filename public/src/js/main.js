@@ -82,6 +82,7 @@ function slides(){
     $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
       lock = 1;
+      console.log('inset');
       $('.hero-slide.left-out').removeClass('left-out active');
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
