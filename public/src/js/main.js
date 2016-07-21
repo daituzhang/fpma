@@ -87,11 +87,16 @@ function slides(){
   }, 5000);
   $('.hero-arrow.arrow-left').click(function(e){
     clearInterval(slideLoop);
+    $( ".hero-arrow").unbind( "click" );
     slideLeft();
+    $( ".hero-arrow").bind( "click" );
   });
   $('.hero-arrow.arrow-right').click(function(e){
     clearInterval(slideLoop);
+    $( ".hero-arrow").unbind( "click" );
     slideRight();
+    $( ".hero-arrow").bind( "click" );
+
   });
 }
 $(document).ready(function() {
