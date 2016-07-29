@@ -1,0 +1,94 @@
+{# {% set backgroundColor = block.backgroundColor == '#000000' ? "" : " background-color: " ~  block.backgroundColor ~ ";" %} #}
+
+<section class="classes" style="{# {{backgroundColor}} #}">
+  <div class="container">
+    {% if block.heading %}
+      <header>
+        <h2>{{ block.heading }}</h2> 
+      </header>
+    {% endif %}
+    {% if block.body %}
+      {{ block.body }}
+    {% endif %}
+    {% if block.schedule | length %}
+      <table class="desktop-tablet-only">
+          <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+          {% for row in block.schedule %}
+          <tr>
+            <td>{{ row.time }}</td>
+            <td>{{ row.monday }}</td>
+            <td>{{ row.tuesday }}</td>
+            <td>{{ row.wednesday }}</td>
+            <td>{{ row.thursday }}</td>
+            <td>{{ row.friday }}</td>
+            <td>{{ row.saturday }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+      <div class="mobile-only mobile-schedule">
+        <hr>
+        <h3>Monday</h3>
+        {% for row in block.schedule %}
+          {% if row.monday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.monday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Tuesday</h3>
+        {% for row in block.schedule %}
+          {% if row.tuesday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.tuesday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Wednesday</h3>
+        {% for row in block.schedule %}
+          {% if row.wednesday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.wednesday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Thursday</h3>
+        {% for row in block.schedule %}
+          {% if row.thursday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.thursday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Friday</h3>
+        {% for row in block.schedule %}
+          {% if row.friday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.friday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Saturday</h3>
+        {% for row in block.schedule %}
+          {% if row.saturday != '' %}
+            <ul>
+              <li><span class="time">{{ row.time }}</span> {{ row.saturday }}</li>
+            </ul>
+          {% endif %}
+        {% endfor %}
+      </div>
+  {% endif %}
+  </div>
+</section>

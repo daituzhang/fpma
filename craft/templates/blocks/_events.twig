@@ -9,7 +9,7 @@
       {{ block.body }}
     {% endif %}
   </div>
-  <div class='calendar'>
+  <div class="calendar table-tablet-only">
     {# We are passing the Month and Years as url params #}
     {% set location = block.location %}
     {% set currentMonth = craft.request.getParam('m') ? craft.request.getParam('m') : "now"|date('n') %}
