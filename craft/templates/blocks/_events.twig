@@ -1,4 +1,28 @@
-<section class="one-column">
+{# We are passing the Month and Years as url params #}
+{% set location = block.location %}
+{% set currentMonth = craft.request.getParam('m') ? craft.request.getParam('m') : "now"|date('n') %}
+{% set currentYear = craft.request.getParam('y') ? craft.request.getParam('y') : "now"|date('Y') %}
+{# Setting a string as current year-month-day #}
+{% set cur = currentYear  ~ "-" ~ currentMonth ~ "-1" %}
+{# Obtain previous and next months dates #}
+{% set prevMonth = cur|date_modify("last day of last month")|date('U') %}
+{% set nextMonth = cur|date_modify("first day of next month")|date('U') %}
+
+{# Create a disabled class if you don't want user to go to previous months #}
+{% set disabled = prevMonth|date('Y-m-d') < now|date('Y-m-d') ? "disabled" : "" %}
+
+{# Get the events for the calendar #}
+{% set events = craft.venti.allEvents().startDate('and', '>= ' ~ prevMonth, '<= ' ~ nextMonth).order('startDate DESC').find() %}
+
+{% set eventsMobile = craft.venti.allEvents().order('startDate DESC').find() %}
+{# Setting the parameters for the Twig Calendar helper #}
+{% set prm = {
+    "events": events,
+    "month": currentMonth,
+    "year": currentYear
+} %}
+{# Start the Twig Calendar helper. Each day's events are assigned to the array "days" #}
+<section class="one-column events">
   <div class="container">
     {% if block.heading %}
       <header>
@@ -9,19 +33,8 @@
       {{ block.body }}
     {% endif %}
   </div>
-  <div class="calendar table-tablet-only">
-    {# We are passing the Month and Years as url params #}
-    {% set location = block.location %}
-    {% set currentMonth = craft.request.getParam('m') ? craft.request.getParam('m') : "now"|date('n') %}
-    {% set currentYear = craft.request.getParam('y') ? craft.request.getParam('y') : "now"|date('Y') %}
-    {# Setting a string as current year-month-day #}
-    {% set cur = currentYear  ~ "-" ~ currentMonth ~ "-1" %}
-    {# Obtain previous and next months dates #}
-    {% set prevMonth = cur|date_modify("last day of last month")|date('U') %}
-    {% set nextMonth = cur|date_modify("first day of next month")|date('U') %}
-    
-    {# Create a disabled class if you don't want user to go to previous months #}
-    {% set disabled = prevMonth|date('Y-m-d') < now|date('Y-m-d') ? "disabled" : "" %}
+  <div class="calendar desktop-tablet-only">
+
     
     {# Previous Month button. Current Month & Year. Next Month Button #}
     <div class="arrow-container">
@@ -30,15 +43,7 @@
         <a href="?m={{ nextMonth|date('n') }}&y={{ nextMonth|date('Y') }}" class="button arrow next ficon-chevron-with-circle-right"></a>
     </div>
     <div class="calendar-block">
-        {# Get the events for the calendar #}
-        {% set events = craft.venti.allEvents().startDate('and', '>= ' ~ prevMonth, '<= ' ~ nextMonth).order('startDate DESC').find() %}
-        {# Setting the parameters for the Twig Calendar helper #}
-        {% set prm = {
-            "events": events,
-            "month": currentMonth,
-            "year": currentYear
-        } %}
-        {# Start the Twig Calendar helper. Each day's events are assigned to the array "days" #}
+        
         {% calendar prm as days %}
             <div class="table-box">
             <table>
@@ -100,5 +105,18 @@
             </div>
         {# In CraftCMS 2.5 we don't need a closing tag for the Twig Calendar helper #}
         </div>
+    </div>
+    <div class="mobile-only">
+        <hr>  
+        {% for event in eventsMobile %}
+            {{ event.eventDetail.startDate.date|date('M jS Y') }}<br>
+            <b>{{ event.title }}</b><br>
+            {% set location = 'FPMA' %}
+            {% if event.location == 'northDallas' %}
+                {% set location = 'NTMA' %}
+            {% endif %}
+            {{ event.eventDetail.startDate.date|date('g:ia') }} &bull; {{ location }}
+            {% if loop.index != eventsMobile|length %}<hr>{% endif %}
+        {% endfor %}
     </div>
 </section>

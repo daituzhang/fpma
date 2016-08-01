@@ -1337,3 +1337,10 @@ section.staff {
     .classes li {
       list-style: none;
       margin-bottom: 15px; } }
+
+.events p {
+  margin-bottom: 30px; }
+
+.events hr {
+  border-top: none;
+  margin-bottom: 30px; }
