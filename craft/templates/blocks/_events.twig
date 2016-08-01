@@ -1,3 +1,4 @@
+{% set backgroundColor = block.backgroundColor == '#000000' ? "" : " background-color: " ~  block.backgroundColor ~ ";" %}
 {# We are passing the Month and Years as url params #}
 {% set location = block.location %}
 {% set currentMonth = craft.request.getParam('m') ? craft.request.getParam('m') : "now"|date('n') %}
@@ -22,7 +23,7 @@
     "year": currentYear
 } %}
 {# Start the Twig Calendar helper. Each day's events are assigned to the array "days" #}
-<section class="one-column events">
+<section class="one-column events" style="{{backgroundColor}}">
   <div class="container">
     {% if block.heading %}
       <header>

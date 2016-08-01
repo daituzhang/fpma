@@ -1,6 +1,6 @@
-{# {% set backgroundColor = block.backgroundColor == '#000000' ? "" : " background-color: " ~  block.backgroundColor ~ ";" %} #}
+{% set backgroundColor = block.backgroundColor == '#000000' ? "" : " background-color: " ~  block.backgroundColor ~ ";" %}
 
-<section class="classes" style="{# {{backgroundColor}} #}">
+<section class="classes" style="{{backgroundColor}}">
   <div class="container">
     {% if block.heading %}
       <header>
