@@ -10,7 +10,7 @@
     {% if block.body %}
         {{ block.body }}
     {% endif %}
-    {% if children|length %}
+    {% if block.specials|length %}
       <div class="grid">
         {% for child in block.specials %}
           {% if child.blocks|length %}
