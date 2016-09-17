@@ -1181,7 +1181,8 @@ nav#mp-menu {
   .secondary-hero .flexible {
     margin-top: 90px;
     padding: 25px;
-    background: rgba(0, 0, 0, 0.7); }
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 1.5rem; }
   @media only screen and (max-width: 760px) and (min-device-width: 1025px) {
     .secondary-hero .side-container {
       padding-left: 0; } }
@@ -1247,18 +1248,23 @@ section.staff {
   .home-programs hr {
     margin: 90px 0 70px; }
 
-.home-locations {
+section.home-locations,
+section.specials {
   color: #777;
   font-size: 1.8rem;
   line-height: 1.6;
   text-align: center; }
-  .home-locations h2 {
+  section.home-locations h2,
+  section.specials h2 {
     margin-bottom: 30px; }
-  .home-locations a {
+  section.home-locations a,
+  section.specials a {
     color: inherit; }
-  .home-locations .home-location-contianer {
+  section.home-locations .home-location-contianer,
+  section.specials .home-location-contianer {
     display: table; }
-  .home-locations .home-location-box {
+  section.home-locations .home-location-box,
+  section.specials .home-location-box {
     display: block;
     height: 220px;
     background: #FFF;
@@ -1267,10 +1273,12 @@ section.staff {
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
     cursor: pointer; }
-    .home-locations .home-location-box:hover {
+    section.home-locations .home-location-box:hover,
+    section.specials .home-location-box:hover {
       -webkit-box-shadow: 2px 2px 21px 2px #d5d5d5;
       box-shadow: 2px 2px 21px 2px #d5d5d5; }
-  .home-locations .box-content {
+  section.home-locations .box-content,
+  section.specials .box-content {
     left: 50%;
     position: absolute;
     top: 50%;
