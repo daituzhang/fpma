@@ -1,6 +1,4 @@
-{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   background-size: cover;" %}
-{% set parent = craft.entries.slug('specials').first %}
-{% set children = parent.getChildren() %}
+{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   background-size: 100%;" %}
 
 <section class="specials" style="{{ backgroundImage }}">
   <div class="container">
@@ -14,7 +12,7 @@
     {% endif %}
     {% if children|length %}
       <div class="grid">
-        {% for child in children %}
+        {% for child in block.specials %}
           {% if child.blocks|length %}
           <div class="col col-1-of-2 col--m-1-of-2">
             <div class="home-location-box">
