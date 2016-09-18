@@ -731,8 +731,10 @@ footer {
   footer .footer-container:not(.form-container) {
     padding: 70px 0; }
   footer .form-container {
-    background-color: #f5f5f5;
+    background-color: #c00000;
     padding: 50px; }
+    footer .form-container .btn.btn-submit {
+      background: #730000; }
   footer li {
     list-style: none; }
     footer li.location:not(:last-child):after {

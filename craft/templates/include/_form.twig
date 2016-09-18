@@ -1,4 +1,4 @@
-{% set form = craft.formBuilder2.getFormByHandle('contact') %}
+{% set form = craft.formBuilder2.getFormByHandle(formHandle) %}
 {% set formSettings = form.formSettings %}
 {% set spamProtectionSettings = form.spamProtectionSettings %}
 {% set tabs = form.fieldLayout.getFieldLayout().getTabs() %}

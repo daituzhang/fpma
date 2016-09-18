@@ -9,6 +9,7 @@
     {% if block.body %}
       {{ block.body }}
     {% endif %}
+    {% set formHandle = 'contact' %}
     {{ include('include/_form.twig')}}
   </div>
 </section>
