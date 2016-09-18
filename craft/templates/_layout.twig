@@ -54,14 +54,14 @@
             
             <li class="icon icon-arrow-left">
               {{ page.getLink() }}
-              {# {% ifchildren %}
+              {% ifchildren %}
                 <div class="mp-level">
                   <h2>{{ page.getTitle() }}</h2>
                   <ul>
                     {% children %}
                   </ul>
                 </div>
-                {% endifchildren %} #}
+                {% endifchildren %}
               </li>
               {% endif %}
               {% endnav %}
