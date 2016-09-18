@@ -809,6 +809,29 @@ img {
 hr {
   border: 1px solid #d5d5d5; }
 
+.box-contianer {
+  display: table; }
+
+.box {
+  display: block;
+  height: 220px;
+  background: #FFF;
+  border: 1px solid #d5d5d5;
+  margin-top: 50px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease; }
+
+.box-content {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: 100%; }
+
 .text-center {
   text-align: center; }
 
@@ -1248,46 +1271,20 @@ section.staff {
   .home-programs hr {
     margin: 90px 0 70px; }
 
-section.home-locations,
-section.specials {
+section.home-locations {
   color: #777;
   font-size: 1.8rem;
   line-height: 1.6;
   text-align: center; }
-  section.home-locations h2,
-  section.specials h2 {
+  section.home-locations h2 {
     margin-bottom: 30px; }
-  section.home-locations a,
-  section.specials a {
+  section.home-locations a {
     color: inherit; }
-  section.home-locations .home-location-contianer,
-  section.specials .home-location-contianer {
-    display: table; }
-  section.home-locations .home-location-box,
-  section.specials .home-location-box {
-    display: block;
-    height: 220px;
-    background: #FFF;
-    border: 1px solid #d5d5d5;
-    margin-top: 50px;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
+  section.home-locations .home-location-box {
     cursor: pointer; }
-    section.home-locations .home-location-box:hover,
-    section.specials .home-location-box:hover {
+    section.home-locations .home-location-box:hover {
       -webkit-box-shadow: 2px 2px 21px 2px #d5d5d5;
       box-shadow: 2px 2px 21px 2px #d5d5d5; }
-  section.home-locations .box-content,
-  section.specials .box-content {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate3d(-50%, -50%, 0);
-    transform: translate3d(-50%, -50%, 0);
-    width: 100%; }
 
 .two-columns {
   color: #FFF;
@@ -1352,3 +1349,13 @@ section.specials {
 .events hr {
   border-top: none;
   margin-bottom: 30px; }
+
+section.specials {
+  color: #777;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  text-align: center; }
+  section.specials h2 {
+    margin-bottom: 30px; }
+  section.specials .box-content {
+    padding: 50px; }

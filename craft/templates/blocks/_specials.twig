@@ -1,4 +1,4 @@
-{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") no-repeat;   background-size: 100%;" %}
+{% set backgroundImage = block.backgroundImage|length == 0 ? "" : " background: url(" ~  block.backgroundImage|first.url ~ ") #f9f9f9 no-repeat;   background-size: 60%;" %}
 
 <section class="specials" style="{{ backgroundImage }}">
   <div class="container">
@@ -13,7 +13,8 @@
     {% if block.specials|length %}
       <div class="grid">
         {% for child in block.specials %}
-          <div class="col col-1-of-2 col--m-1-of-2">
+          <div class="col {% if block.specials|length == 3 %}col-1-of-3 col--m-1-of-3{% else %}
+             col-1-of-2 col--m-1-of-2{% endif %}">
             <div class="home-location-box">
               <div class="box-content">
                 <b>{{ child.title }}</b>

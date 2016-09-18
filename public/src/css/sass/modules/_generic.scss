@@ -48,6 +48,24 @@ img {
 hr {
   border: 1px solid $gray-border;
 }
+
+
+.box-contianer {
+  display: table;
+}
+.box {
+  display: block;
+  height: 220px;
+  background: $white;
+  border: 1px solid $gray-border;
+  margin-top: 50px;
+  transition: all .3s ease;
+}
+.box-content {
+  @include center();
+  width: 100%;
+}
+
 .text-center {
   text-align: center;
 }
