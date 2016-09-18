@@ -50,7 +50,7 @@
           <h2><a href="/">Home</a></h2>
           <ul>
             {% nav page in pages %}
-            <li class="icon icon-arrow-left{% if page.hideOnNav == false %} hide{% endif %}
+            <li class="icon icon-arrow-left{% if page.hideOnNav %} hide{% endif %}
 ">
               {{ page.getLink() }}
               {% ifchildren %}
