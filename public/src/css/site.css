@@ -999,7 +999,9 @@ nav#mp-menu {
       nav#mp-menu li.social {
         color: #FFF; }
         nav#mp-menu li.social a {
-          padding: 22px 8px; } }
+          padding: 22px 8px; }
+      nav#mp-menu li.hide {
+        display: none; } }
 
 .menu-trigger#trigger {
   background: transparent; }

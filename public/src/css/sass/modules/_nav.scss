@@ -118,6 +118,9 @@ nav#mp-menu {
         padding: 22px 8px;
       }
     }
+    li.hide {
+      display: none;
+    }
   }
 }
 .menu-trigger#trigger {
