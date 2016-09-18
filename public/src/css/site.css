@@ -415,7 +415,7 @@ p {
       background: #777;
       color: #f5f5f5; }
 
-#form-contact .field:last-child {
+.formbuilder2 .field:last-child {
   display: none; }
 
 form {
@@ -732,9 +732,11 @@ footer {
     padding: 70px 0; }
   footer .form-container {
     background-color: #c00000;
-    padding: 50px; }
+    padding: 50px;
+    color: #FFF; }
     footer .form-container .btn.btn-submit {
-      background: #730000; }
+      background: #730000;
+      border: none; }
   footer li {
     list-style: none; }
     footer li.location:not(:last-child):after {

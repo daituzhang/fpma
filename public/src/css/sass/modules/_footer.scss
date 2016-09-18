@@ -16,8 +16,10 @@ footer {
   .form-container {
     background-color: $red-form;
     padding: 50px;
+    color: $white;
     .btn.btn-submit {
       background: $red-btn;
+      border: none;
     }
   }
   li {
