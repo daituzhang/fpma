@@ -211,6 +211,11 @@ class ElementsService extends BaseApplicationComponent
 			return array();
 		}
 
+		if ($justIds)
+		{
+			return $query->queryColumn();
+		}
+
 		$results = $query->queryAll();
 
 		if (!$results)
@@ -218,22 +223,7 @@ class ElementsService extends BaseApplicationComponent
 			return array();
 		}
 
-		// Do they just care about the IDs?
-		if ($justIds)
-		{
-			$ids = array();
-
-			foreach ($results as $result)
-			{
-				$ids[] = $result['id'];
-			}
-
-			return $ids;
-		}
-		else
-		{
-			return $this->populateElements($results, $criteria, $contentTable, $fieldColumns, $justIds);
-		}
+		return $this->populateElements($results, $criteria, $contentTable, $fieldColumns);
 	}
 
 	/**
@@ -253,7 +243,6 @@ class ElementsService extends BaseApplicationComponent
 		$locale = $criteria->locale;
 		$elementType = $criteria->getElementType();
 		$indexBy = $criteria->indexBy;
-		$lastElement = null;
 
 		foreach ($results as $result)
 		{
@@ -330,27 +319,17 @@ class ElementsService extends BaseApplicationComponent
 
 			if ($indexBy)
 			{
-				$elements[$element->$indexBy] = $element;
+				// Cast to a string in the case of SingleOptionFieldData, so its
+				// __toString() method gets invoked.
+				$elements[(string)$element->$indexBy] = $element;
 			}
 			else
 			{
 				$elements[] = $element;
 			}
-
-			if ($lastElement)
-			{
-				$lastElement->setNext($element);
-				$element->setPrev($lastElement);
-			}
-			else
-			{
-				$element->setPrev(false);
-			}
-
-			$lastElement = $element;
 		}
 
-		$lastElement->setNext(false);
+		ElementHelper::setNextPrevOnElements($elements);
 
 		// Should we eager-load some elements onto these?
 		if ($criteria->with)
@@ -426,6 +405,9 @@ class ElementsService extends BaseApplicationComponent
 			{
 				$targetPath = $sourcePath.'.'.$segment;
 
+				// Figure out the path mapping wants a custom order
+				$useCustomOrder = !empty($pathCriterias[$targetPath]['order']);
+
 				// Make sure we haven't already eager-loaded this target path
 				if (!isset($elementsByPath[$targetPath]))
 				{
@@ -449,20 +431,23 @@ class ElementsService extends BaseApplicationComponent
 
 						foreach ($map['map'] as $mapping)
 						{
-							$uniqueTargetElementIds[] = $mapping['target'];
+							if (!in_array($mapping['target'], $uniqueTargetElementIds))
+							{
+								$uniqueTargetElementIds[] = $mapping['target'];
+							}
+
 							$targetElementIdsBySourceIds[$mapping['source']][] = $mapping['target'];
 						}
 
-						$uniqueTargetElementIds = array_unique($uniqueTargetElementIds);
-
 						// Get the target elements
 						$customParams = array_merge(
+							// Default to no order and limit, but allow the element type/path criteria to override
+							array('order' => null, 'limit' => null),
 							(isset($map['criteria']) ? $map['criteria'] : array()),
 							(isset($pathCriterias[$targetPath]) ? $pathCriterias[$targetPath] : array())
 						);
 						$criteria = $this->getCriteria($map['elementType'], $customParams);
 						$criteria->id = $uniqueTargetElementIds;
-						$criteria->limit = null;
 						$targetElements = $this->findElements($criteria);
 
 						if ($targetElements)
@@ -470,12 +455,15 @@ class ElementsService extends BaseApplicationComponent
 							// Success! Store those elements on $elementsByPath FFR
 							$elementsByPath[$targetPath] = $targetElements;
 
-							// Index the target elements by their IDs
-							$targetElementsById = array();
-
-							foreach ($targetElements as $targetElement)
+							// Index the target elements by their IDs if we are using the map-defined order
+							if (!$useCustomOrder)
 							{
-								$targetElementsById[$targetElement->id] = $targetElement;
+								$targetElementsById = array();
+
+								foreach ($targetElements as $targetElement)
+								{
+									$targetElementsById[$targetElement->id] = $targetElement;
+								}
 							}
 						}
 					}
@@ -488,11 +476,26 @@ class ElementsService extends BaseApplicationComponent
 
 						if (isset($targetElementIdsBySourceIds[$sourceElementId]))
 						{
-							foreach ($targetElementIdsBySourceIds[$sourceElementId] as $targetElementId)
+							if ($useCustomOrder)
 							{
-								if (isset($targetElementsById[$targetElementId]))
+								// Assign the elements in the order they were returned from the query
+								foreach ($targetElements as $targetElement)
 								{
-									$targetElementsForSource[] = $targetElementsById[$targetElementId];
+									if (in_array($targetElement->id, $targetElementIdsBySourceIds[$sourceElementId]))
+									{
+										$targetElementsForSource[] = $targetElement;
+									}
+								}
+							}
+							else
+							{
+								// Assign the elements in the order defined by the map
+								foreach ($targetElementIdsBySourceIds[$sourceElementId] as $targetElementId)
+								{
+									if (isset($targetElementsById[$targetElementId]))
+									{
+										$targetElementsForSource[] = $targetElementsById[$targetElementId];
+									}
 								}
 							}
 						}
@@ -523,21 +526,49 @@ class ElementsService extends BaseApplicationComponent
 	 */
 	public function getTotalElements($criteria = null)
 	{
+		// TODO: Lots in here MySQL specific.
 		$query = $this->buildElementsQuery($criteria, $contentTable, $fieldColumns, true);
 
 		if ($query)
 		{
-			// Remove the order, offset, limit, and any additional tables in the FROM clause
 			$query
 				->order('')
 				->offset(0)
 				->limit(-1)
 				->from('elements elements');
 
-			// Can't use COUNT() here because of complications with the GROUP BY clause.
-			$rows = $query->queryColumn();
+			$elementsIdColumn = 'elements.id';
+			$elementsIdColumnAlias = 'elementsId';
+			$selectedColumns = $query->getSelect();
 
-			return count($rows);
+			// Normalize with no quotes. setSelect later will properly add them back in.
+			$selectedColumns = str_replace('`', '', $selectedColumns);
+
+			// Guarantee we select an elements.id column
+			if (strpos($selectedColumns, $elementsIdColumn) === false)
+			{
+				$selectedColumns = $elementsIdColumn.', '.$selectedColumns;
+			}
+
+			// Replace all instances of elements.id with elementsId
+			$selectedColumns = str_replace($elementsIdColumn, $elementsIdColumnAlias, $selectedColumns);
+
+			// Find the position of the first occurrence of elementsId
+			$pos = strpos($selectedColumns, $elementsIdColumnAlias);
+
+			// Make the first occurrence of elementsId an alias for elements.id
+			if ($pos !== false)
+			{
+				$selectedColumns = substr_replace($selectedColumns, $elementsIdColumn.' AS '.$elementsIdColumnAlias, $pos, strlen($elementsIdColumnAlias));
+			}
+
+			$query->setSelect($selectedColumns);
+			$masterQuery = craft()->db->createCommand();
+			$masterQuery->params = $query->params;
+			$masterQuery->from(sprintf('(%s) derivedElementsTable', $query->getText()));
+			$count = $masterQuery->count('derivedElementsTable.'.$elementsIdColumnAlias);
+
+			return $count;
 		}
 		else
 		{
@@ -762,8 +793,8 @@ class ElementsService extends BaseApplicationComponent
 		// ---------------------------------------------------------------------
 
 		// Convert the old childOf and parentOf params to the relatedTo param
-		// childOf(element)  => relatedTo({ source: element })
-		// parentOf(element) => relatedTo({ target: element })
+		// childOf(element)  => relatedTo({ sourceElement: element })
+		// parentOf(element) => relatedTo({ targetElement: element })
 		if (!$criteria->relatedTo && ($criteria->childOf || $criteria->parentOf))
 		{
 			$relatedTo = array('and');
@@ -779,6 +810,7 @@ class ElementsService extends BaseApplicationComponent
 			}
 
 			$criteria->relatedTo = $relatedTo;
+			craft()->deprecator->log('element_old_relation_params', 'The ‘childOf’, ‘childField’, ‘parentOf’, and ‘parentField’ element params have been deprecated. Use ‘relatedTo’ instead.');
 		}
 
 		if ($criteria->relatedTo)
@@ -1103,11 +1135,16 @@ class ElementsService extends BaseApplicationComponent
 				}
 			}
 
-			if ($criteria->level || $criteria->depth)
+			if (!$criteria->level && $criteria->depth)
 			{
-				// TODO: 'depth' is deprecated; use 'level' instead.
-				$level = ($criteria->level ? $criteria->level : $criteria->depth);
-				$query->andWhere(DbHelper::parseParam('structureelements.level', $level, $query->params));
+				$criteria->level = $criteria->depth;
+				$criteria->depth = null;
+				craft()->deprecator->log('element_depth_param', 'The \'depth\' element param has been deprecated. Use \'level\' instead.');
+			}
+
+			if ($criteria->level)
+			{
+				$query->andWhere(DbHelper::parseParam('structureelements.level', $criteria->level, $query->params));
 			}
 		}
 
@@ -1358,6 +1395,10 @@ class ElementsService extends BaseApplicationComponent
 
 				if ($success)
 				{
+					// Save the new dateCreated and dateUpdated dates on the model
+					$element->dateCreated = new DateTime('@'.$elementRecord->dateCreated->getTimestamp());
+					$element->dateUpdated = new DateTime('@'.$elementRecord->dateUpdated->getTimestamp());
+
 					if ($isNewElement)
 					{
 						// Save the element id on the element model, in case {id} is in the URL format
@@ -1504,6 +1545,12 @@ class ElementsService extends BaseApplicationComponent
 							// Don't bother with any of the other locales
 							$success = false;
 							break;
+						}
+
+						// Go ahead and re-do search index keywords to grab things like "title" in multi-locale installs.
+						if ($isNewElement)
+						{
+							craft()->search->indexElementAttributes($localizedElement);
 						}
 
 						ElementHelper::setUniqueUri($localizedElement);
@@ -2043,7 +2090,7 @@ class ElementsService extends BaseApplicationComponent
 	 *
 	 * @param string $class The element action class handle.
 	 *
-	 * @return IElementType|null The element action, or `null`.
+	 * @return IElementAction|null The element action, or `null`.
 	 */
 	public function getAction($class)
 	{
@@ -2071,7 +2118,17 @@ class ElementsService extends BaseApplicationComponent
 			{
 				global $refTagsByElementType;
 
-				$elementTypeHandle = ucfirst($matches[1]);
+				if (strpos($matches[1], '_') === false)
+				{
+					$elementTypeHandle = ucfirst($matches[1]);
+				}
+				else
+				{
+					$elementTypeHandle = preg_replace_callback('/^\w|_\w/', function($matches) {
+						return strtoupper($matches[0]);
+					}, $matches[1]);
+				}
+
 				$token = '{'.StringHelper::randomString(9).'}';
 
 				$refTagsByElementType[$elementTypeHandle][] = array('token' => $token, 'matches' => $matches);
@@ -2156,8 +2213,25 @@ class ElementsService extends BaseApplicationComponent
 										{
 											if (!empty($refTag['matches'][3]) && isset($element->{$refTag['matches'][3]}))
 											{
-												$value = (string) $element->{$refTag['matches'][3]};
-												$replace[] = $this->parseRefs($value);
+												try
+												{
+													$value = $element->{$refTag['matches'][3]};
+
+													if (is_object($value) && !method_exists($value, '__toString'))
+													{
+														throw new Exception('Object of class '.get_class($value).' could not be converted to string');
+													}
+
+													$replace[] = $this->parseRefs((string)$value);
+												}
+												catch (\Exception $e)
+												{
+													// Log it
+													Craft::log('An exception was thrown when parsing the ref tag "'.$refTag['matches'][0]."\":\n".$e->getMessage(), LogLevel::Error);
+
+													// Replace the token with the original ref tag
+													$replace[] = $refTag['matches'][0];
+												}
 											}
 											else
 											{

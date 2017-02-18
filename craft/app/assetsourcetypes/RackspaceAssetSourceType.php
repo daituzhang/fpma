@@ -390,8 +390,10 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 	 */
 	protected function getNameReplacementInFolder(AssetFolderModel $folder, $fileName)
 	{
+		$baseFileName = IOHelper::getFileName($fileName, false);
 		$prefix = $this->_getPathPrefix().$folder->path;
-		$fileList = $this->_getFileList($prefix);
+		
+		$fileList = $this->_getFileList($prefix.$baseFileName);
 
 		foreach ($fileList as &$file)
 		{
@@ -422,7 +424,7 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 			'region'     => array(AttributeType::String, 'required' => true),
 			'container'  => array(AttributeType::String, 'required' => true),
 			'publicURLs' => array(AttributeType::Bool,   'default' => true),
-			'urlPrefix'  => array(AttributeType::String, 'required' => true),
+			'urlPrefix'  => array(AttributeType::String),
 			'subfolder'  => array(AttributeType::String, 'default' => ''),
 		);
 	}
@@ -650,7 +652,7 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 	protected function deleteSourceFolder(AssetFolderModel $parentFolder, $folderName)
 	{
 		$container = $this->getSettings()->container;
-		$objectsToDelete = $this->_getFileList($this->_getPathPrefix().$parentFolder->path.$folderName);
+		$objectsToDelete = $this->_getFileList($this->_getPathPrefix().$parentFolder->path.$folderName.'/');
 
 		foreach ($objectsToDelete as $file)
 		{
@@ -1173,7 +1175,7 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 	 */
 	private function _getFileList($prefix = '')
 	{
-		$targetUri = $this->_prepareRequestURI($this->getSettings()->container).'?prefix='.$prefix.'&format=json';
+		$targetUri = $this->_prepareRequestURI($this->getSettings()->container).'?prefix='.urlencode($prefix).'&format=json';
 		$response = $this->_doAuthenticatedRequest(static::RACKSPACE_STORAGE_OPERATION, $targetUri);
 
 		$extractedResponse = static::_extractRequestResponse($response);

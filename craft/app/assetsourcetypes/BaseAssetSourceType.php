@@ -278,7 +278,9 @@ abstract class BaseAssetSourceType extends BaseSavableComponentType
 
 				if (!$this->isSourceLocal() && $fileModel->kind == 'image')
 				{
-					craft()->assetTransforms->storeLocalSource($localFilePath, craft()->path->getAssetsImageSourcePath().$fileModel->id.'.'.IOHelper::getExtension($fileModel->filename));
+					$targetPath = craft()->path->getAssetsImageSourcePath().$fileModel->id.'.'.IOHelper::getExtension($fileModel->filename);
+					craft()->assetTransforms->storeLocalSource($localFilePath, $targetPath);
+					craft()->assetTransforms->queueSourceForDeletingIfNecessary($targetPath);
 				}
 
 				// Check if we stored a conflict response originally - send that back then.
@@ -1124,11 +1126,14 @@ abstract class BaseAssetSourceType extends BaseSavableComponentType
 	{
 		$thumbFolders = IOHelper::getFolderContents(craft()->path->getAssetsThumbsPath());
 
-		foreach ($thumbFolders as $folder)
+		if ($thumbFolders)
 		{
-			if (is_dir($folder))
+			foreach ($thumbFolders as $folder)
 			{
-				IOHelper::deleteFile($folder.'/'.$file->id.'.'.IOHelper::getExtension($file->filename));
+				if (is_dir($folder))
+				{
+					IOHelper::deleteFile($folder.'/'.$file->id.'.'.IOHelper::getExtension($file->filename));
+				}
 			}
 		}
 	}

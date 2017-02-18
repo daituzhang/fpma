@@ -1,11 +1,3 @@
-/**
- * @author    Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @copyright Copyright (c) 2014, Pixel & Tonic, Inc.
- * @license   http://craftcms.com/license Craft License Agreement
- * @see       http://craftcms.com
- * @package   craft.app.resources
- */
-
 (function($){
 
 
@@ -47,6 +39,8 @@ Craft.RichTextInput = Garnish.Base.extend(
 
 		this.redactorConfig.imageUpload = true;
 		this.redactorConfig.fileUpload = true;
+		this.redactorConfig.dragImageUpload = false;
+		this.redactorConfig.dragFileUpload = false;
 
 		// Prevent a JS error when calling core.destroy() when opts.plugins == false
 		if (typeof this.redactorConfig.plugins !== typeof [])
@@ -140,7 +134,7 @@ Craft.RichTextInput = Garnish.Base.extend(
 		return function() {
 			callback1.apply(this, arguments);
 			callback2.apply(this, arguments);
-		}
+		};
 	},
 
 	initRedactor: function()
@@ -306,6 +300,7 @@ Craft.RichTextInput = Garnish.Base.extend(
 		{
 			this.assetLinkSelectionModal = Craft.createElementSelectorModal('Asset', {
 				storageKey: 'RichTextFieldType.LinkToAsset',
+				sources: this.assetSources,
 				criteria: { locale: this.elementLocale },
 				onSelect: $.proxy(function(assets)
 				{
@@ -348,7 +343,8 @@ Craft.RichTextInput = Garnish.Base.extend(
 					{
 						this.redactor.selection.restore();
 						var element   = elements[0],
-							url       = element.url+'#'+settings.elementType.toLowerCase()+':'+element.id,
+							elementTypeHandle = settings.elementType.replace(/^\w|_\w/g, function (match) { return match.toLowerCase(); }),
+							url       = element.url+'#'+elementTypeHandle+':'+element.id,
 							selection = this.redactor.selection.text(),
 							title = selection.length > 0 ? selection : element.label;
 						this.redactor.insert.node($('<a href="'+url+'">'+title+'</a>')[0]);

@@ -5,6 +5,7 @@
 	"(blank)",
 	"1 update available",
 	"Actions",
+	"Apply this to the {number} remaining conflicts?",
 	"An unknown error occurred.",
 	"Any changes will be lost if you leave this page.",
 	"Are you sure you want to delete “{name}”?",
@@ -31,6 +32,7 @@
 	"Display in a table",
 	"Done",
 	"Enter the name of the folder",
+	"Enter your password to continue.",
 	"Enter your password to log back in.",
 	"Failed task",
 	"Failed",
@@ -39,6 +41,7 @@
 	"Hide sidebar",
 	"hour",
 	"hours",
+	"Incorrect password.",
 	"Instructions",
 	"Keep me logged in",
 	"License transferred.",
@@ -79,6 +82,7 @@
 	"Sort by {attribute}",
 	"Source settings saved",
 	"Structure",
+	"Submit",
 	"Table Columns",
 	"This can be left blank if you just want an unlabeled separator.",
 	"Transfer it to:",
@@ -88,6 +92,7 @@
 	"week",
 	"weeks",
 	"What do you want to do with their content?",
+	"What do you want to do?",
 	"Your session has ended.",
 	"Your session will expire in {time}.",
 	"{ctrl}C to copy.",
@@ -96,14 +101,11 @@
 %}
 
 
-{% set task = craft.tasks.getRunningTask() %}
-{% if task %}
-	{% includejs 'Craft.cp.setRunningTaskInfo('~task.getInfo()|json_encode|raw~');' %}
-	{% includejs 'Craft.cp.trackTaskProgress();' %}
+{% includejs 'Craft.cp.setTaskInfo('~craft.tasks.getTaskInfo()|json_encode|raw~', false);' %}
+{% if craft.tasks.isTaskRunning() %}
+	{% includejs 'Craft.cp.trackTaskProgress(true);' %}
 {% elseif craft.tasks.areTasksPending() %}
 	{% includejs 'Craft.cp.runPendingTasks();' %}
-{% elseif craft.tasks.haveTasksFailed() %}
-	{% includejs 'Craft.cp.setRunningTaskInfo({ status: "error" });' %}
 {% endif %}
 
 
@@ -130,7 +132,7 @@
 
 		<div class="topbar">
 
-			<a class="site-name" href="{{ siteUrl }}" title="{{ 'Site Homepage'|t }}" target="_blank">
+			<a class="site-name{% if CraftEdition >= CraftClient and craft.rebrand.isIconUploaded %} has-icon{% endif %}" href="{{ siteUrl }}" title="{{ 'Site Homepage'|t }}" target="_blank">
 
 				{% if CraftEdition >= CraftClient %}
 					{% if craft.rebrand.isIconUploaded %}
@@ -210,9 +212,6 @@
 
 					</li>
 				{% endfor %}
-
-				{#
-				#}
 			</ul>
 		</nav>
 
@@ -348,7 +347,7 @@
 		{% endif %}
 
 		<div id="footer">
-		
+
 			{%- spaceless %}
 				{% set canUpgradeEdition = craft.app.canUpgradeEdition() %}
 				{% set licensedEdition = craft.app.getLicensedEdition() %}
@@ -368,7 +367,7 @@
 			{% endspaceless -%}
 
 			<ul>
-				<li>Craft CMS {{ craft.app.getVersion() }}.{{ craft.app.getBuild() }}</li>
+				<li>Craft CMS {{ craft.app.getVersion() }}</li>
 				<li>© Pixel &amp; Tonic</li>
 				{% if currentUser.can('performUpdates') %}
 					<li><a id="footer-updates" href="{{ url('updates') }}">{{ craft.app.isUpdateInfoCached() and totalUpdates is defined and totalUpdates ? updateText : "Check for updates"|t }}</a></li>
