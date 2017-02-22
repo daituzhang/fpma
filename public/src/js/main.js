@@ -83,11 +83,9 @@ function slides(){
     $('.hero-slide').eq(next).addClass('active right-in');
     setTimeout(function(){
       lock = 0;
-      console.log('inset');
       $('.hero-slide.left-out').removeClass('left-out active');
       $('.hero-slide.right-in').removeClass('right-in');
     }, 1000);
-    console.log('inright',lock);
   }
   var slideLoop = setInterval(function() {
     slideRight();
@@ -99,17 +97,68 @@ function slides(){
     }
   });
   $('.hero-arrow.arrow-right').click(function(e){
-    console.log(lock);
     if(!lock){
       clearInterval(slideLoop);
       slideRight();
     }
   });
 }
+
+function gallery() {
+    var len = $('.gallery-image-container').length;
+    var lock = 0;
+    function showNext(next) {
+      var imageUrl = $('.gallery-image-container').eq(next).children('.gallery-image').data('url');
+      $('.gallery-view').data('index',next);
+      $('.gallery-view').addClass('fade');
+      setTimeout(function(){
+        lock = 0;
+        $('.gallery-view').attr('src', imageUrl);
+        $('.gallery-view').removeClass('fade');
+      }, 500);
+    }
+    function slideLeft() {
+      lock = 1;
+      var current = $('.gallery-view').data('index');
+      var next = current == 0 ? len - 1 : current - 1;
+      showNext(next);
+    }
+    function slideRight() {
+      lock = 1;
+      var current = $('.gallery-view').data('index');
+      var next = current == len - 1 ? 0 : current + 1;
+      showNext(next)
+    }
+    $('.gallery-arrow.arrow-left').click(function(e){
+      if(!lock){
+        slideLeft();
+      }
+    });
+    $('.gallery-arrow.arrow-right').click(function(e){
+      if(!lock){
+        slideRight();
+      }
+    });
+    $('.gallery-image-container').click(function(e){
+      $('.gallery-view-container:not(.active)').addClass('active');
+      var current = $('.gallery-view').data('index');
+      console.log(current);
+      var next = $(this).index();
+      if(!lock && current != next){
+        showNext(next);
+      }
+    });
+    $('.gallery-close').click(function(e){
+      e.preventDefault();
+      $('.gallery-view-container.active').removeClass('active');
+    });
+  }
+
 $(document).ready(function() {
     setSubject();
     if($('#gmap_canvas').length ) {
        google.maps.event.addDomListener(window, 'load', initMap); 
     }
     slides();
+    gallery();
 });

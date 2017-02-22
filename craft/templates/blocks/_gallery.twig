@@ -1,0 +1,35 @@
+<section class="gallery" >
+  <div class="container gallery-container">
+        {% set numArr1 = range(20,50) %}
+        {% set numArr2 = range(20,50) %}
+        {% for image in block.images %}
+          {% if loop.index%3 == 1 %}
+            {% set random1 = random( numArr1 ) %}
+            {% set random2 = random( numArr2 ) %}
+            {% set random3 = 100 - random1 - random2 %}
+            <div class="gallery-image-container left" style="width: {{random1 }}%;">
+          {% endif %}
+          {% if loop.index%3 == 2 %}
+            <div class="gallery-image-container middle" style="width: {{random2 }}%;">
+          {% endif %}
+          {% if loop.index%3 == 0 %}
+            <div class="gallery-image-container right" style="width: {{random3 }}%;">
+          {% endif %}
+               <div class="gallery-image" style="background: url({{ image.url }});" data-url="{{image.url}}">
+               </div>
+            </div>
+        {% endfor %}
+  </div>
+  <div class="gallery-view-container">
+    <a href class="hamburger hamburger--collapse gallery-close is-active">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </a>
+    <span class="gallery-arrow arrow-left ficon-chevron-left"></span>
+    <div class="container">
+      <img class="gallery-view" src="{{ block.images|first.url }}" data-index="0">
+    </div>
+    <span class="gallery-arrow arrow-right ficon-chevron-right"></span>
+  </div>
+</section>
