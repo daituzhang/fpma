@@ -16,7 +16,7 @@
         {% if loop.index%3 == 0 %}
           <div class="gallery-image-container right" style="width: {{random3 }}%;">
         {% endif %}
-             <div class="gallery-image" style="background: url({{ image.url }});" data-url="{{image.url}}" data-description="{{image.body}}">
+             <div class="gallery-image" style="background: url({{ image.url }});" data-url="{{image.url}}" data-description="{{image.bodyText}}">
              </div>
           </div>
       {% endfor %}
@@ -30,7 +30,7 @@
       <span class="gallery-arrow arrow-left ficon-chevron-left"></span>
       <div class="container">
         <img class="gallery-view" src="{{ block.images|first.url }}" data-index="0">
-        <p class="gallery-description">{{ block.images|first.body }}</p>
+        <p class="gallery-description">{{ block.images|first.bodyText }}</p>
       </div>
       <span class="gallery-arrow arrow-right ficon-chevron-right"></span>
     </div>
