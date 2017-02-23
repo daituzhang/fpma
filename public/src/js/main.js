@@ -109,12 +109,14 @@ function gallery() {
     var lock = 0;
     function showNext(next) {
       var imageUrl = $('.gallery-image-container').eq(next).children('.gallery-image').data('url');
+      var description = $('.gallery-image-container').eq(next).children('.gallery-image').data('description');
       $('.gallery-view').data('index',next);
-      $('.gallery-view').addClass('fade');
+      $('.gallery-view-container .container').addClass('fade');
       setTimeout(function(){
         lock = 0;
         $('.gallery-view').attr('src', imageUrl);
-        $('.gallery-view').removeClass('fade');
+        $('.gallery-description').text(description);
+        $('.gallery-view-container .container').removeClass('fade');
       }, 500);
     }
     function slideLeft() {
