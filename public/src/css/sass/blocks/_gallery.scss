@@ -10,16 +10,25 @@
     }
   }
   .gallery-image-container {
-    height: 340px;
-    padding: 0 10px 10px 10px;
+    height: calc( (100vw - 350px) /3 );
+    max-height: 924px/3;
+    padding: 0 5px 10px 10px;
     display: inline-block;
     cursor: pointer;
+    width: calc( (100% - 10px) / 3);
     &.middle {
-      padding: 0 0 10px 0;
+      padding: 0 5px 10px 5px;
+    }
+    &.right {
+      padding: 0 5px 10px 5px;
+    }
+    @include tablet-only {
+      height: calc( (90vw - 10px ) /3 );
     }
     @include mobile-only {
       width: 100% !important;
       padding: 5px 10px!important;
+      height: calc( 90vw - 10px );
       display: block;
     }
   }

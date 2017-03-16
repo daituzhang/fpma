@@ -8,13 +8,13 @@
           {% set random1 = random( numArr1 ) %}
           {% set random2 = random( numArr2 ) %}
           {% set random3 = 100 - random1 - random2 %}
-          <div class="gallery-image-container left" style="width: {{random1 }}%;">
+          <div class="gallery-image-container left" {# style="width: {{random1 }}%; #}">
         {% endif %}
         {% if loop.index%3 == 2 %}
-          <div class="gallery-image-container middle" style="width: {{random2 }}%;">
+          <div class="gallery-image-container middle" {# style="width: {{random2 }}%; #}">
         {% endif %}
         {% if loop.index%3 == 0 %}
-          <div class="gallery-image-container right" style="width: {{random3 }}%;">
+          <div class="gallery-image-container right" {# style="width: {{random3 }}%; #}">
         {% endif %}
              <div class="gallery-image" style="background: url({{ image.url }});" data-url="{{image.url}}" data-description="{{image.bodyText}}">
              </div>
